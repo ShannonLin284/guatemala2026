@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The Vault — Guatemala 2026</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <div class="cursor-dot" id="cursorDot"></div>
+  <div class="cursor-ring" id="cursorRing"></div>
+
+  <header class="mini-hero">
+    <div class="mini-hero-bg mini-hero-bg-docs"></div>
+    <div class="mini-hero-gradient"></div>
+    <div class="mini-hero-content">
+      <p class="mini-hero-eyebrow">Guatemala 2026</p>
+      <h1 class="mini-hero-title">The Vault</h1>
+    </div>
+  </header>
+
+  <nav class="sticky-nav">
+    <a class="nav-logo" href="index.html">GT '26</a>
+    <a href="index.html#itinerary">Itinerary</a>
+    <a href="index.html#packing">Packing</a>
+    <a href="index.html#food">Food</a>
+    <a href="index.html#tips">Tips</a>
+    <div class="nav-spacer"></div>
+    <a href="crew.html">The Crew</a>
+    <a href="facts.html">Facts</a>
+    <a href="docs.html" class="nav-active">The Vault</a>
+  </nav>
+
+  <section class="section section-border">
+    <div class="container">
+      <div class="section-header-row">
+        <div class="section-header">
+          <p class="section-label"><span>Info Hub</span></p>
+          <h2 class="section-title">Tickets &amp; Info</h2>
+          <p class="section-sub">Store flight confirmations, hotel bookings, tour confirmations, insurance — everything in one place. Saves to your browser.</p>
+        </div>
+        <button class="btn-primary" onclick="openDocModal(-1)">+ Add Entry</button>
+      </div>
+
+      <!-- Category filter -->
+      <div class="docs-categories" id="catFilter">
+        <button class="cat-pill active" data-cat="all" onclick="filterCat('all', this)">All</button>
+        <button class="cat-pill" data-cat="flights"   onclick="filterCat('flights',   this)">✈️ Flights</button>
+        <button class="cat-pill" data-cat="hotels"    onclick="filterCat('hotels',    this)">🏨 Hotels</button>
+        <button class="cat-pill" data-cat="tours"     onclick="filterCat('tours',     this)">🌋 Tours</button>
+        <button class="cat-pill" data-cat="insurance" onclick="filterCat('insurance', this)">🛡️ Insurance</button>
+        <button class="cat-pill" data-cat="other"     onclick="filterCat('other',     this)">📋 Other</button>
+      </div>
+
+      <!-- Doc list -->
+      <div id="docList"></div>
+
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="footer-inner">
+      <div>
+        <p class="footer-title">Guatemala '26</p>
+        <p class="footer-sub">May 22–25 · Antigua · Acatenango</p>
+      </div>
+      <div class="footer-links">
+        <a href="index.html">Home</a>
+        <a href="crew.html">The Crew</a>
+        <a href="facts.html">Facts</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    /* ---- Cursor ---- */
+    const dot = document.getElementById('cursorDot');
+    const ring = document.getElementById('cursorRing');
+    document.addEventListener('mousemove', e => {
+      dot.style.left = e.clientX + 'px'; dot.style.top = e.clientY + 'px';
+      ring.style.left = e.clientX + 'px'; ring.style.top = e.clientY + 'px';
+    });
+    document.querySelectorAll('a,button').forEach(el => {
+      el.addEventListener('mouseenter', () => document.body.classList.add('cursor-hover'));
+      el.addEventListener('mouseleave', () => document.body.classList.remove('cursor-hover'));
+    });
+
+    /* ---- Data ---- */
+    const DOCS_KEY = 'guat2026_docs';
+
+    const defaultDocs = [
+      {
+        cat: 'tours',
+        title: 'Acatenango Overnight Hike',
+        who: 'Everyone',
+        confirmation: '',
+        date: '2026-05-23',
+        time: '06:00',
+        url: '',
+        notes: 'Book via OX Expeditions or Wicho & Charlie\'s — ~$65/person'
+      }
+    ];
+
+    const catMeta = {
+      flights:   { label: '✈️ Flight',    cls: 'cat-flights'   },
+      hotels:    { label: '🏨 Hotel',     cls: 'cat-hotels'    },
+      tours:     { label: '🌋 Tour',      cls: 'cat-tours'     },
+      insurance: { label: '🛡️ Insurance', cls: 'cat-insurance' },
+      other:     { label: '📋 Other',     cls: 'cat-other'     }
+    };
+
+    function getDocs() {
+      const saved = localStorage.getItem(DOCS_KEY);
+      return saved ? JSON.parse(saved) : defaultDocs;
+    }
+    function saveDocs(docs) { localStorage.setItem(DOCS_KEY, JSON.stringify(docs)); }
+
+    let activeCat = 'all';
+
+    function filterCat(cat, btn) {
+      activeCat = cat;
+      document.querySelectorAll('.cat-pill').forEach(p => p.classList.remove('active'));
+      btn.classList.add('active');
+      renderDocs();
+    }
+
+    function renderDocs() {
+      const docs = getDocs();
+      const filtered = activeCat === 'all' ? docs : docs.filter(d => d.cat === activeCat);
+      const list = document.getElementById('docList');
+
+      if (filtered.length === 0) {
+        list.innerHTML = `
+          <div class="docs-empty">
+            <div style="font-size:2.5rem;margin-bottom:0.5rem;">🗂️</div>
+            <strong style="color:var(--white);">Nothing here yet</strong>
+            <p>Hit "+ Add Entry" to add a flight, hotel, tour confirmation, or anything else.</p>
+          </div>`;
+        return;
+      }
+
+      list.innerHTML = `<div class="docs-list">${filtered.map((doc, i) => {
+        const realIndex = docs.indexOf(doc);
+        const meta = catMeta[doc.cat] || catMeta.other;
+        const dateStr = doc.date ? new Date(doc.date + 'T12:00:00').toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' }) : '';
+        return `
+          <div class="doc-row" onclick="openDocModal(${realIndex})">
+            <span class="doc-cat-badge ${meta.cls}">${meta.label}</span>
+            <div class="doc-info">
+              <span class="doc-title">${doc.title || 'Untitled'}</span>
+              <div class="doc-meta">
+                ${doc.who ? `<span class="doc-meta-item">👤 ${doc.who}</span>` : ''}
+                ${dateStr ? `<span class="doc-meta-item">📅 ${dateStr}${doc.time ? ' · ' + doc.time : ''}</span>` : ''}
+                ${doc.confirmation ? `<span class="doc-meta-item">🔖 ${doc.confirmation}</span>` : ''}
+                ${doc.notes ? `<span class="doc-notes">${doc.notes}</span>` : ''}
+              </div>
+            </div>
+            <div class="doc-actions" onclick="event.stopPropagation()">
+              ${doc.url ? `<a class="doc-link-btn" href="${doc.url}" target="_blank" rel="noopener">Open ↗</a>` : ''}
+              <button class="doc-edit-btn" onclick="openDocModal(${realIndex})">Edit</button>
+              <button class="doc-edit-btn" onclick="deleteDoc(${realIndex})">✕</button>
+            </div>
+          </div>`;
+      }).join('')}</div>`;
+    }
+
+    function openDocModal(index) {
+      const existing = document.getElementById('docModal');
+      if (existing) existing.remove();
+
+      const docs = getDocs();
+      const doc = index === -1 ? { cat: 'flights', title: '', who: '', confirmation: '', date: '', time: '', url: '', notes: '' } : docs[index];
+
+      const modal = document.createElement('div');
+      modal.id = 'docModal';
+      modal.className = 'modal-overlay';
+      modal.innerHTML = `
+        <div class="modal">
+          <h3>${index === -1 ? 'Add Entry' : 'Edit Entry'}</h3>
+          <div class="modal-form">
+            <label>Category</label>
+            <select id="dm-cat">
+              <option value="flights"   ${doc.cat==='flights'   ? 'selected':''}>✈️ Flight</option>
+              <option value="hotels"    ${doc.cat==='hotels'    ? 'selected':''}>🏨 Hotel</option>
+              <option value="tours"     ${doc.cat==='tours'     ? 'selected':''}>🌋 Tour</option>
+              <option value="insurance" ${doc.cat==='insurance' ? 'selected':''}>🛡️ Insurance</option>
+              <option value="other"     ${doc.cat==='other'     ? 'selected':''}>📋 Other</option>
+            </select>
+            <label>Title</label>
+            <input type="text" id="dm-title" value="${doc.title}" placeholder="e.g. Shannon — AA Flight to GUA" />
+            <label>Who is this for?</label>
+            <input type="text" id="dm-who" value="${doc.who}" placeholder="Everyone / Shannon, Alex..." />
+            <label>Confirmation #</label>
+            <input type="text" id="dm-conf" value="${doc.confirmation}" placeholder="e.g. ABC123" />
+            <label>Date</label>
+            <input type="date" id="dm-date" value="${doc.date}" />
+            <label>Time (optional)</label>
+            <input type="text" id="dm-time" value="${doc.time}" placeholder="e.g. 08:45 AM" />
+            <label>Link (booking site, confirmation email, etc.)</label>
+            <input type="url" id="dm-url" value="${doc.url}" placeholder="https://..." />
+            <label>Notes</label>
+            <textarea id="dm-notes" placeholder="Anything else the group should know...">${doc.notes}</textarea>
+          </div>
+          <div class="modal-actions">
+            <button class="btn-primary" onclick="saveDoc(${index})">Save</button>
+            <button class="btn-ghost"   onclick="document.getElementById('docModal').remove()">Cancel</button>
+          </div>
+        </div>`;
+      document.body.appendChild(modal);
+      modal.addEventListener('click', e => { if (e.target === modal) modal.remove(); });
+    }
+
+    function saveDoc(index) {
+      const title = document.getElementById('dm-title').value.trim();
+      if (!title) { alert('Add a title.'); return; }
+      const doc = {
+        cat:          document.getElementById('dm-cat').value,
+        title,
+        who:          document.getElementById('dm-who').value.trim(),
+        confirmation: document.getElementById('dm-conf').value.trim(),
+        date:         document.getElementById('dm-date').value,
+        time:         document.getElementById('dm-time').value.trim(),
+        url:          document.getElementById('dm-url').value.trim(),
+        notes:        document.getElementById('dm-notes').value.trim()
+      };
+      const docs = getDocs();
+      if (index === -1) docs.push(doc);
+      else docs[index] = doc;
+      saveDocs(docs);
+      document.getElementById('docModal').remove();
+      renderDocs();
+    }
+
+    function deleteDoc(index) {
+      if (!confirm('Remove this entry?')) return;
+      const docs = getDocs();
+      docs.splice(index, 1);
+      saveDocs(docs);
+      renderDocs();
+    }
+
+    renderDocs();
+  </script>
+</body>
+</html>

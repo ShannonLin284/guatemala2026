@@ -4,222 +4,168 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>The Crew — Guatemala 2026</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@700;900&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
 
-  <!-- MINI HERO -->
+  <div class="cursor-dot" id="cursorDot"></div>
+  <div class="cursor-ring" id="cursorRing"></div>
+
   <header class="mini-hero">
-    <div class="hero-overlay"></div>
+    <div class="mini-hero-bg"></div>
+    <div class="mini-hero-gradient"></div>
     <div class="mini-hero-content">
-      <p class="hero-eyebrow">Guatemala 2026</p>
+      <p class="mini-hero-eyebrow">Guatemala 2026</p>
       <h1 class="mini-hero-title">The Crew</h1>
-      <p class="hero-sub">The people making this happen.</p>
     </div>
   </header>
 
-  <!-- NAV -->
   <nav class="sticky-nav">
-    <a href="index.html">Home</a>
+    <a class="nav-logo" href="index.html">GT '26</a>
     <a href="index.html#itinerary">Itinerary</a>
     <a href="index.html#packing">Packing</a>
     <a href="index.html#food">Food</a>
     <a href="index.html#tips">Tips</a>
+    <div class="nav-spacer"></div>
     <a href="crew.html" class="nav-active">The Crew</a>
-    <a href="facts.html">Fun Facts</a>
+    <a href="facts.html">Facts</a>
+    <a href="docs.html">The Vault</a>
   </nav>
 
-  <section class="section">
+  <section class="section section-border">
     <div class="container">
       <div class="section-header-row">
-        <div>
+        <div class="section-header">
+          <p class="section-label"><span>People</span></p>
           <h2 class="section-title">Who's Coming</h2>
-          <p class="section-sub">Add yourself to the crew. Click a card to edit your info.</p>
+          <p class="section-sub">Add yourself. Click a card to edit your info.</p>
         </div>
-        <button class="edit-btn" id="addCrewBtn" onclick="addCrewMember()">+ Add Member</button>
+        <button class="btn-primary" onclick="addCrewMember()">+ Add Member</button>
       </div>
 
-      <div class="crew-grid" id="crewGrid">
-        <!-- Cards are rendered by JS -->
-      </div>
-
+      <div class="crew-grid" id="crewGrid"></div>
       <div class="crew-stats" id="crewStats"></div>
     </div>
   </section>
 
-  <!-- FOOTER -->
   <footer class="footer">
-    <div class="container">
-      <p class="footer-title">Guatemala 2026</p>
-      <p>May 22–25 &nbsp;·&nbsp; Antigua &amp; Acatenango</p>
+    <div class="footer-inner">
+      <div>
+        <p class="footer-title">Guatemala '26</p>
+        <p class="footer-sub">May 22–25 · Antigua · Acatenango</p>
+      </div>
       <div class="footer-links">
         <a href="index.html">Home</a>
-        <a href="facts.html">Fun Facts</a>
+        <a href="facts.html">Facts</a>
+        <a href="docs.html">The Vault</a>
       </div>
     </div>
   </footer>
 
   <script>
+    const dot = document.getElementById('cursorDot');
+    const ring = document.getElementById('cursorRing');
+    document.addEventListener('mousemove', e => {
+      dot.style.left = e.clientX + 'px'; dot.style.top = e.clientY + 'px';
+      ring.style.left = e.clientX + 'px'; ring.style.top = e.clientY + 'px';
+    });
+
     const CREW_KEY = 'guat2026_crew';
-
     const defaultCrew = [
-      {
-        name: 'Shannon',
-        emoji: '🧗',
-        role: 'Trip Organizer',
-        hype: 'Let\'s get it.',
-        confirmed: true,
-        color: '#52b788'
-      }
+      { name: 'Shannon', emoji: '🧗', role: 'Trip Organizer', hype: "Let's get it.", confirmed: true, color: '#ff4d1a' }
     ];
-
-    const emojiOptions = ['🧗','🏕️','🌋','🥾','🎒','🦅','⛰️','🌄','🔥','🏔️','🌿','💪'];
-    const colorOptions = ['#52b788','#e85d04','#f4a261','#4cc9f0','#c77dff','#ff6b6b','#ffd166','#06d6a0'];
+    const emojiOptions = ['🧗','🏕️','🌋','🥾','🎒','🦅','⛰️','🌄','🔥','🏔️','🌿','💪','📸','🌊','⭐'];
+    const colorOptions = ['#ff4d1a','#4fd896','#f0c040','#4f93d8','#c07dff','#ff6b6b','#ffd166','#06d6a0'];
 
     function loadCrew() {
-      const saved = localStorage.getItem(CREW_KEY);
-      return saved ? JSON.parse(saved) : defaultCrew;
+      const s = localStorage.getItem(CREW_KEY);
+      return s ? JSON.parse(s) : defaultCrew;
     }
-
-    function saveCrew(crew) {
-      localStorage.setItem(CREW_KEY, JSON.stringify(crew));
-    }
+    function saveCrew(c) { localStorage.setItem(CREW_KEY, JSON.stringify(c)); }
 
     function renderCrew() {
       const crew = loadCrew();
-      const grid = document.getElementById('crewGrid');
-      const stats = document.getElementById('crewStats');
-
-      grid.innerHTML = crew.map((member, i) => `
-        <div class="crew-card" style="--card-color: ${member.color}">
-          <div class="crew-emoji">${member.emoji}</div>
-          <div class="crew-confirmed ${member.confirmed ? 'confirmed-yes' : 'confirmed-no'}">
-            ${member.confirmed ? '✅ Confirmed' : '⏳ TBD'}
+      document.getElementById('crewGrid').innerHTML = crew.map((m, i) => `
+        <div class="crew-card" style="--card-color:${m.color}">
+          <div class="crew-emoji">${m.emoji}</div>
+          <div class="crew-confirmed ${m.confirmed ? 'confirmed-yes' : 'confirmed-no'}">
+            ${m.confirmed ? 'Confirmed' : 'TBD'}
           </div>
-          <h3 class="crew-name">${member.name}</h3>
-          <p class="crew-role">${member.role}</p>
-          <p class="crew-hype">"${member.hype}"</p>
+          <h3 class="crew-name">${m.name}</h3>
+          <p class="crew-role">${m.role}</p>
+          <p class="crew-hype">"${m.hype}"</p>
           <div class="crew-actions">
             <button class="crew-btn" onclick="editMember(${i})">Edit</button>
             <button class="crew-btn crew-btn-del" onclick="deleteMember(${i})">Remove</button>
           </div>
-        </div>
-      `).join('');
+        </div>`).join('');
 
       const confirmed = crew.filter(c => c.confirmed).length;
-      stats.innerHTML = `
-        <div class="stat"><span class="stat-num">${crew.length}</span><span class="stat-label">Total Members</span></div>
+      document.getElementById('crewStats').innerHTML = `
+        <div class="stat"><span class="stat-num">${crew.length}</span><span class="stat-label">Total</span></div>
         <div class="stat"><span class="stat-num">${confirmed}</span><span class="stat-label">Confirmed</span></div>
-        <div class="stat"><span class="stat-num">${crew.length - confirmed}</span><span class="stat-label">TBD</span></div>
-      `;
-    }
+        <div class="stat"><span class="stat-num">${crew.length - confirmed}</span><span class="stat-label">TBD</span></div>`;
 
-    function addCrewMember() {
-      showModal(-1, {
-        name: '',
-        emoji: '🎒',
-        role: '',
-        hype: '',
-        confirmed: false,
-        color: colorOptions[Math.floor(Math.random() * colorOptions.length)]
+      document.querySelectorAll('a,button,.crew-card').forEach(el => {
+        el.addEventListener('mouseenter', () => document.body.classList.add('cursor-hover'));
+        el.addEventListener('mouseleave', () => document.body.classList.remove('cursor-hover'));
       });
     }
 
-    function editMember(index) {
-      const crew = loadCrew();
-      showModal(index, crew[index]);
+    function addCrewMember() {
+      showModal(-1, { name:'', emoji:'🎒', role:'', hype:'', confirmed:false, color: colorOptions[Math.floor(Math.random()*colorOptions.length)] });
+    }
+    function editMember(i) { showModal(i, loadCrew()[i]); }
+    function deleteMember(i) {
+      if (!confirm('Remove?')) return;
+      const crew = loadCrew(); crew.splice(i, 1); saveCrew(crew); renderCrew();
     }
 
-    function deleteMember(index) {
-      if (!confirm('Remove this crew member?')) return;
-      const crew = loadCrew();
-      crew.splice(index, 1);
-      saveCrew(crew);
-      renderCrew();
-    }
-
-    function showModal(index, member) {
-      // Remove existing modal
-      const existing = document.getElementById('crewModal');
-      if (existing) existing.remove();
-
+    function showModal(index, m) {
+      document.getElementById('crewModal')?.remove();
       const modal = document.createElement('div');
       modal.id = 'crewModal';
       modal.className = 'modal-overlay';
       modal.innerHTML = `
         <div class="modal">
-          <h3>${index === -1 ? 'Add Crew Member' : 'Edit Member'}</h3>
+          <h3>${index === -1 ? 'Add Member' : 'Edit Member'}</h3>
           <div class="modal-form">
             <label>Name</label>
-            <input type="text" id="m-name" value="${member.name}" placeholder="Your name" />
+            <input type="text" id="m-name" value="${m.name}" placeholder="Your name" />
             <label>Role / Vibe</label>
-            <input type="text" id="m-role" value="${member.role}" placeholder="e.g. The Photographer, The Navigator" />
+            <input type="text" id="m-role" value="${m.role}" placeholder="e.g. The Photographer" />
             <label>Hype Quote</label>
-            <input type="text" id="m-hype" value="${member.hype}" placeholder="One sentence about why you're pumped" />
-            <label>Pick an Emoji</label>
-            <div class="emoji-picker">
-              ${emojiOptions.map(e => `<span class="emoji-opt ${e === member.emoji ? 'emoji-sel' : ''}" onclick="selectEmoji(this,'${e}')">${e}</span>`).join('')}
-            </div>
-            <input type="hidden" id="m-emoji" value="${member.emoji}" />
-            <label>Pick a Color</label>
-            <div class="color-picker">
-              ${colorOptions.map(c => `<span class="color-opt ${c === member.color ? 'color-sel' : ''}" style="background:${c}" onclick="selectColor(this,'${c}')"></span>`).join('')}
-            </div>
-            <input type="hidden" id="m-color" value="${member.color}" />
-            <label class="check-label">
-              <input type="checkbox" id="m-confirmed" ${member.confirmed ? 'checked' : ''} />
-              Confirmed going
-            </label>
+            <input type="text" id="m-hype" value="${m.hype}" placeholder="Why you're pumped" />
+            <label>Emoji</label>
+            <div class="emoji-picker">${emojiOptions.map(e => `<span class="emoji-opt ${e===m.emoji?'emoji-sel':''}" onclick="selEmoji(this,'${e}')">${e}</span>`).join('')}</div>
+            <input type="hidden" id="m-emoji" value="${m.emoji}" />
+            <label>Color</label>
+            <div class="color-picker">${colorOptions.map(c => `<span class="color-opt ${c===m.color?'color-sel':''}" style="background:${c}" onclick="selColor(this,'${c}')"></span>`).join('')}</div>
+            <input type="hidden" id="m-color" value="${m.color}" />
+            <label class="check-label"><input type="checkbox" id="m-conf" ${m.confirmed?'checked':''} /> Confirmed going</label>
           </div>
           <div class="modal-actions">
-            <button class="edit-btn" onclick="saveMember(${index})">Save</button>
-            <button class="crew-btn crew-btn-del" onclick="document.getElementById('crewModal').remove()">Cancel</button>
+            <button class="btn-primary" onclick="saveMember(${index})">Save</button>
+            <button class="btn-ghost"   onclick="document.getElementById('crewModal').remove()">Cancel</button>
           </div>
-        </div>
-      `;
+        </div>`;
       document.body.appendChild(modal);
       modal.addEventListener('click', e => { if (e.target === modal) modal.remove(); });
     }
 
-    function selectEmoji(el, emoji) {
-      document.querySelectorAll('.emoji-opt').forEach(e => e.classList.remove('emoji-sel'));
-      el.classList.add('emoji-sel');
-      document.getElementById('m-emoji').value = emoji;
-    }
-
-    function selectColor(el, color) {
-      document.querySelectorAll('.color-opt').forEach(e => e.classList.remove('color-sel'));
-      el.classList.add('color-sel');
-      document.getElementById('m-color').value = color;
-    }
+    function selEmoji(el, e) { document.querySelectorAll('.emoji-opt').forEach(x=>x.classList.remove('emoji-sel')); el.classList.add('emoji-sel'); document.getElementById('m-emoji').value = e; }
+    function selColor(el, c) { document.querySelectorAll('.color-opt').forEach(x=>x.classList.remove('color-sel')); el.classList.add('color-sel'); document.getElementById('m-color').value = c; }
 
     function saveMember(index) {
       const name = document.getElementById('m-name').value.trim();
       if (!name) { alert('Add a name!'); return; }
+      const m = { name, role: document.getElementById('m-role').value.trim() || 'Crew Member', hype: document.getElementById('m-hype').value.trim() || "Let's go.", emoji: document.getElementById('m-emoji').value, color: document.getElementById('m-color').value, confirmed: document.getElementById('m-conf').checked };
       const crew = loadCrew();
-      const member = {
-        name,
-        role: document.getElementById('m-role').value.trim() || 'Crew Member',
-        hype: document.getElementById('m-hype').value.trim() || 'Let\'s go.',
-        emoji: document.getElementById('m-emoji').value,
-        color: document.getElementById('m-color').value,
-        confirmed: document.getElementById('m-confirmed').checked
-      };
-      if (index === -1) {
-        crew.push(member);
-      } else {
-        crew[index] = member;
-      }
-      saveCrew(crew);
-      document.getElementById('crewModal').remove();
-      renderCrew();
+      if (index === -1) crew.push(m); else crew[index] = m;
+      saveCrew(crew); document.getElementById('crewModal').remove(); renderCrew();
     }
 
     renderCrew();
   </script>
-
 </body>
 </html>
