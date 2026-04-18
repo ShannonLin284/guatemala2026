@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Guatemala 2026 — Acatenango Trip</title>
+  <title>Guatemala 2026 — Acatenango</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@700;900&display=swap" rel="stylesheet" />
@@ -25,88 +25,59 @@
 
   <!-- NAV -->
   <nav class="sticky-nav">
-    <a href="#overview">Overview</a>
+    <a href="index.html">Home</a>
     <a href="#itinerary">Itinerary</a>
     <a href="#packing">Packing</a>
-    <a href="#logistics">Logistics</a>
-    <a href="#food">Food & Drink</a>
+    <a href="#food">Food</a>
     <a href="#tips">Tips</a>
+    <a href="crew.html">The Crew</a>
+    <a href="facts.html">Fun Facts</a>
   </nav>
-
-  <!-- OVERVIEW -->
-  <section id="overview" class="section">
-    <div class="container">
-      <h2 class="section-title">The Trip at a Glance</h2>
-      <div class="cards-row">
-        <div class="card card-accent">
-          <div class="card-icon">🌋</div>
-          <h3>Acatenango</h3>
-          <p>3,976 m (13,045 ft) active stratovolcano with front-row views of Fuego erupting next door.</p>
-        </div>
-        <div class="card card-accent">
-          <div class="card-icon">📍</div>
-          <h3>Base: Antigua</h3>
-          <p>Guatemala's colonial gem — cobblestone streets, great food, and the trailhead just 1.5 hrs away.</p>
-        </div>
-        <div class="card card-accent">
-          <div class="card-icon">🏕️</div>
-          <h3>1-Night Camp</h3>
-          <p>Overnight at base camp (~3,700 m) to catch the 4 AM summit push and Fuego eruptions at night.</p>
-        </div>
-        <div class="card card-accent">
-          <div class="card-icon">✈️</div>
-          <h3>Fly into GUA</h3>
-          <p>La Aurora International Airport (GUA), Guatemala City. Antigua is 45 min by shuttle.</p>
-        </div>
-      </div>
-
-      <div class="alert">
-        <span class="alert-icon">⚡</span>
-        <div>
-          <strong>Book the tour operator ASAP.</strong> Acatenango overnight tours fill fast, especially on weekends. Aim to book at least 4–6 weeks out. Most operators cap at ~15 people per group.
-        </div>
-      </div>
-    </div>
-  </section>
 
   <!-- ITINERARY -->
   <section id="itinerary" class="section section-dark">
     <div class="container">
-      <h2 class="section-title light">Day-by-Day Itinerary</h2>
+      <div class="section-header-row">
+        <div>
+          <h2 class="section-title light">Day-by-Day Itinerary</h2>
+          <p class="section-sub light-sub">Click <strong>Edit Mode</strong> to update any details — changes save to your browser.</p>
+        </div>
+        <button class="edit-btn" id="editToggle" onclick="toggleEditMode()">✏️ Edit Mode</button>
+      </div>
 
-      <div class="timeline">
+      <div class="timeline" id="itineraryTimeline">
 
         <!-- DAY 1 -->
         <div class="day-block">
           <div class="day-badge">Day 1</div>
           <div class="day-header">
-            <h3>Friday, May 22 — Arrive &amp; Antigua</h3>
+            <h3 class="editable" data-key="d1-title">Friday, May 22 — Arrive &amp; Antigua</h3>
             <span class="day-tag">Travel + Explore</span>
           </div>
           <div class="day-body">
             <ul class="schedule">
               <li>
-                <span class="time">Morning / Afternoon</span>
-                <span class="desc">Fly into GUA (La Aurora International). Aim for morning arrivals so you maximize the day. Book a shared shuttle to Antigua (~Q80–100 / ~$10–12 USD per person, ~45 min).</span>
+                <span class="time editable" data-key="d1-t1">Morning / Afternoon</span>
+                <span class="desc editable" data-key="d1-d1">Fly into GUA (La Aurora International). Aim for morning arrivals so you maximize the day. Book a shared shuttle to Antigua (~Q80–100 / ~$10–12 USD per person, ~45 min).</span>
               </li>
               <li>
-                <span class="time">Afternoon</span>
-                <span class="desc">Check into your hostel/hotel in Antigua. Drop bags and freshen up. <strong>Recommended area:</strong> 4a Calle Poniente or near Parque Central — walkable to everything.</span>
+                <span class="time editable" data-key="d1-t2">Afternoon</span>
+                <span class="desc editable" data-key="d1-d2">Check into your hostel/hotel in Antigua. Drop bags and freshen up. Recommended area: 4a Calle Poniente or near Parque Central — walkable to everything.</span>
               </li>
               <li>
-                <span class="time">4:00 PM</span>
-                <span class="desc">Walk Antigua's Parque Central and Arco de Santa Catalina. Pick up any last-minute gear at <strong>Nim Po't</strong> or a local outfitter.</span>
+                <span class="time editable" data-key="d1-t3">4:00 PM</span>
+                <span class="desc editable" data-key="d1-d3">Walk Antigua's Parque Central and Arco de Santa Catalina. Pick up any last-minute gear at Nim Po't or a local outfitter.</span>
               </li>
               <li>
-                <span class="time">6:00 PM</span>
-                <span class="desc">Group dinner — see <a href="#food">Food section</a> for picks. Do a final packing check together and confirm pickup time with your tour operator.</span>
+                <span class="time editable" data-key="d1-t4">6:00 PM</span>
+                <span class="desc editable" data-key="d1-d4">Group dinner — see Food section below. Do a final packing check together and confirm pickup time with your tour operator.</span>
               </li>
               <li>
-                <span class="time">9:00 PM</span>
-                <span class="desc"><strong>Early to bed.</strong> Big hike day tomorrow — you'll want 7–8 hrs sleep before a 5–6 AM wake-up.</span>
+                <span class="time editable" data-key="d1-t5">9:00 PM</span>
+                <span class="desc editable" data-key="d1-d5">Early to bed. Big hike day tomorrow — you'll want 7–8 hrs sleep before a 5–6 AM wake-up.</span>
               </li>
             </ul>
-            <div class="day-tip">
+            <div class="day-tip editable" data-key="d1-tip">
               <strong>Altitude tip:</strong> Antigua sits at 1,530 m. You'll already be acclimatizing. Drink lots of water and avoid alcohol tonight.
             </div>
           </div>
@@ -116,41 +87,41 @@
         <div class="day-block">
           <div class="day-badge day-badge-red">Day 2</div>
           <div class="day-header">
-            <h3>Saturday, May 23 — Acatenango Ascent &amp; Camp</h3>
+            <h3 class="editable" data-key="d2-title">Saturday, May 23 — Acatenango Ascent &amp; Camp</h3>
             <span class="day-tag day-tag-red">Main Event</span>
           </div>
           <div class="day-body">
             <ul class="schedule">
               <li>
-                <span class="time">5:00 AM</span>
-                <span class="desc">Wake up. Eat a solid breakfast. Have your pack ready the night before.</span>
+                <span class="time editable" data-key="d2-t1">5:00 AM</span>
+                <span class="desc editable" data-key="d2-d1">Wake up. Eat a solid breakfast. Have your pack ready the night before.</span>
               </li>
               <li>
-                <span class="time">6:00 AM</span>
-                <span class="desc">Shuttle pickup from Antigua to <strong>La Soledad trailhead</strong> (~1.5 hrs). Meet your guides.</span>
+                <span class="time editable" data-key="d2-t2">6:00 AM</span>
+                <span class="desc editable" data-key="d2-d2">Shuttle pickup from Antigua to La Soledad trailhead (~1.5 hrs). Meet your guides.</span>
               </li>
               <li>
-                <span class="time">7:30 AM</span>
-                <span class="desc"><strong>Hike begins.</strong> The trail gains ~1,500 m over ~8 km to base camp. Expect 4–6 hrs of steady uphill through corn fields → cloud forest → open volcanic terrain. Pace yourself — it's a grind.</span>
+                <span class="time editable" data-key="d2-t3">7:30 AM</span>
+                <span class="desc editable" data-key="d2-d3">Hike begins. The trail gains ~1,500 m over ~8 km to base camp. Expect 4–6 hrs of steady uphill through corn fields → cloud forest → open volcanic terrain. Pace yourself — it's a grind.</span>
               </li>
               <li>
-                <span class="time">1:00 – 2:00 PM</span>
-                <span class="desc">Arrive at <strong>Base Camp (~3,700 m)</strong>. Set up tents, eat lunch provided by your operator. Rest and acclimatize. Views of Fuego erupting across the valley.</span>
+                <span class="time editable" data-key="d2-t4">1:00 – 2:00 PM</span>
+                <span class="desc editable" data-key="d2-d4">Arrive at Base Camp (~3,700 m). Set up tents, eat lunch provided by your operator. Rest and acclimatize. Views of Fuego erupting across the valley.</span>
               </li>
               <li>
-                <span class="time">Afternoon</span>
-                <span class="desc">Optional short hike to a viewpoint above camp. Watch Fuego erupt every 15–30 min — bring your camera.</span>
+                <span class="time editable" data-key="d2-t5">Afternoon</span>
+                <span class="desc editable" data-key="d2-d5">Optional short hike to a viewpoint above camp. Watch Fuego erupt every 15–30 min — bring your camera.</span>
               </li>
               <li>
-                <span class="time">5:30 PM</span>
-                <span class="desc">Hot dinner at camp (most operators provide soup + rice/pasta). Layer up — temperatures drop to 0–5°C after sunset.</span>
+                <span class="time editable" data-key="d2-t6">5:30 PM</span>
+                <span class="desc editable" data-key="d2-d6">Hot dinner at camp (most operators provide soup + rice/pasta). Layer up — temperatures drop to 0–5°C after sunset.</span>
               </li>
               <li>
-                <span class="time">Night</span>
-                <span class="desc">Watch Fuego glow red against the night sky from your tent. Sleep by 8 PM for the summit push. Guides will wake you.</span>
+                <span class="time editable" data-key="d2-t7">Night</span>
+                <span class="desc editable" data-key="d2-d7">Watch Fuego glow red against the night sky from your tent. Sleep by 8 PM for the summit push. Guides will wake you.</span>
               </li>
             </ul>
-            <div class="day-tip">
+            <div class="day-tip editable" data-key="d2-tip">
               <strong>What to expect physically:</strong> This is the hardest day. The altitude + incline hit differently. Go slow, breathe deep, no shame in taking breaks every 10–15 min.
             </div>
           </div>
@@ -160,41 +131,41 @@
         <div class="day-block">
           <div class="day-badge day-badge-gold">Day 3</div>
           <div class="day-header">
-            <h3>Sunday, May 24 — Summit + Descent + Antigua</h3>
+            <h3 class="editable" data-key="d3-title">Sunday, May 24 — Summit + Descent + Antigua</h3>
             <span class="day-tag day-tag-gold">Summit Day</span>
           </div>
           <div class="day-body">
             <ul class="schedule">
               <li>
-                <span class="time">3:00 – 4:00 AM</span>
-                <span class="desc">Guides wake the group. Layer up everything you have. Headlamps on. Begin the <strong>summit push</strong> (~1.5–2 hrs to the top). The final stretch is loose ash and steep — use trekking poles.</span>
+                <span class="time editable" data-key="d3-t1">3:00 – 4:00 AM</span>
+                <span class="desc editable" data-key="d3-d1">Guides wake the group. Layer up everything you have. Headlamps on. Begin the summit push (~1.5–2 hrs to the top). The final stretch is loose ash and steep — use trekking poles.</span>
               </li>
               <li>
-                <span class="time">5:30 – 6:00 AM</span>
-                <span class="desc"><strong>Summit at 3,976 m.</strong> 360° views: Fuego, Agua, Lake Atitlán on clear days, and the Pacific coast. Watch sunrise paint everything gold. This is the moment. 🌅</span>
+                <span class="time editable" data-key="d3-t2">5:30 – 6:00 AM</span>
+                <span class="desc editable" data-key="d3-d2">Summit at 3,976 m. 360° views: Fuego, Agua, Lake Atitlán on clear days, and the Pacific coast. Watch sunrise paint everything gold. This is the moment.</span>
               </li>
               <li>
-                <span class="time">7:00 AM</span>
-                <span class="desc">Descend back to base camp. Eat breakfast. Break down tents. Guides pack up camp.</span>
+                <span class="time editable" data-key="d3-t3">7:00 AM</span>
+                <span class="desc editable" data-key="d3-d3">Descend back to base camp. Eat breakfast. Break down tents. Guides pack up camp.</span>
               </li>
               <li>
-                <span class="time">9:00 AM</span>
-                <span class="desc"><strong>Begin descent to trailhead.</strong> Faster than the ascent but tough on the knees — trekking poles and gaiters help with the sandy/ashy sections. ~3–4 hrs down.</span>
+                <span class="time editable" data-key="d3-t4">9:00 AM</span>
+                <span class="desc editable" data-key="d3-d4">Begin descent to trailhead. Faster than the ascent but tough on the knees — trekking poles and gaiters help with the sandy/ashy sections. ~3–4 hrs down.</span>
               </li>
               <li>
-                <span class="time">12:30 – 1:00 PM</span>
-                <span class="desc">Back at La Soledad. Board shuttle to Antigua. Clean up at the hotel.</span>
+                <span class="time editable" data-key="d3-t5">12:30 – 1:00 PM</span>
+                <span class="desc editable" data-key="d3-d5">Back at La Soledad. Board shuttle to Antigua. Clean up at the hotel.</span>
               </li>
               <li>
-                <span class="time">3:00 PM</span>
-                <span class="desc">Recovery mode: coffee, food, and rest. You've earned it.</span>
+                <span class="time editable" data-key="d3-t6">3:00 PM</span>
+                <span class="desc editable" data-key="d3-d6">Recovery mode: coffee, food, and rest. You've earned it.</span>
               </li>
               <li>
-                <span class="time">Evening</span>
-                <span class="desc">Celebratory dinner in Antigua. Explore the rooftop bars — <strong>Sky Cafe</strong> and <strong>La Casserole</strong> are fan favorites.</span>
+                <span class="time editable" data-key="d3-t7">Evening</span>
+                <span class="desc editable" data-key="d3-d7">Celebratory dinner in Antigua. Explore the rooftop bars — Sky Cafe and La Casserole are fan favorites.</span>
               </li>
             </ul>
-            <div class="day-tip">
+            <div class="day-tip editable" data-key="d3-tip">
               <strong>Weather note:</strong> May is the start of rainy season. Mornings are usually clear — summit views are best early. Clouds typically roll in by 10–11 AM, so the early wake-up is worth it.
             </div>
           </div>
@@ -204,31 +175,92 @@
         <div class="day-block">
           <div class="day-badge">Day 4</div>
           <div class="day-header">
-            <h3>Monday, May 25 — Antigua + Fly Home</h3>
+            <h3 class="editable" data-key="d4-title">Monday, May 25 — Antigua + Fly Home</h3>
             <span class="day-tag">Depart</span>
           </div>
           <div class="day-body">
             <ul class="schedule">
               <li>
-                <span class="time">Morning</span>
-                <span class="desc">Slow morning, big breakfast. Walk the market at <strong>Mercado de Artesanías</strong> — pick up textiles, coffee, and souvenirs. Antigua's weaving and pottery make excellent gifts.</span>
+                <span class="time editable" data-key="d4-t1">Morning</span>
+                <span class="desc editable" data-key="d4-d1">Slow morning, big breakfast. Walk the market at Mercado de Artesanías — pick up textiles, coffee, and souvenirs. Antigua's weaving and pottery make excellent gifts.</span>
               </li>
               <li>
-                <span class="time">Late Morning</span>
-                <span class="desc">Optional: visit <strong>Cerro de la Cruz</strong> for a quick city overlook, or explore the <strong>ruins of La Merced church</strong>.</span>
+                <span class="time editable" data-key="d4-t2">Late Morning</span>
+                <span class="desc editable" data-key="d4-d2">Optional: visit Cerro de la Cruz for a quick city overlook, or explore the ruins of La Merced church.</span>
               </li>
               <li>
-                <span class="time">Afternoon</span>
-                <span class="desc">Shuttle back to GUA airport for flights home. Book the shuttle at least 3 hrs before departure. GUA airport is small — 2 hrs early is plenty.</span>
+                <span class="time editable" data-key="d4-t3">Afternoon</span>
+                <span class="desc editable" data-key="d4-d3">Shuttle back to GUA airport for flights home. Book the shuttle at least 3 hrs before departure. GUA airport is small — 2 hrs early is plenty.</span>
               </li>
             </ul>
-            <div class="day-tip">
+            <div class="day-tip editable" data-key="d4-tip">
               <strong>Flight timing:</strong> Afternoon/evening flights work best so you have a full morning in Antigua. Most US connections route through Miami, Houston, or Atlanta.
             </div>
           </div>
         </div>
 
+      </div><!-- /timeline -->
+
+      <!-- LOGISTICS (embedded in itinerary section) -->
+      <div class="logistics-block">
+        <h3 class="logistics-title">Logistics &amp; Getting There</h3>
+        <div class="logistics-grid">
+          <div class="logistics-card">
+            <h4>✈️ Getting There</h4>
+            <ul>
+              <li>Fly into <strong>GUA (La Aurora Intl)</strong>, Guatemala City</li>
+              <li>Major US hubs: Miami (AA), Houston (UA), Atlanta (DL), Dallas (AA)</li>
+              <li>Non-stop from several US cities, ~3–5 hr flight</li>
+              <li>Shared shuttle to Antigua: ~$10–12/person, 45 min</li>
+            </ul>
+          </div>
+          <div class="logistics-card">
+            <h4>🏨 Where to Stay</h4>
+            <ul>
+              <li><strong>Budget:</strong> Yellow House Hostel, The Terrace Hostel</li>
+              <li><strong>Mid-range:</strong> Hotel Sor Juana, Porta Hotel Antigua</li>
+              <li><strong>Splurge:</strong> Casa Santo Domingo</li>
+              <li>Book near Parque Central for walkability</li>
+            </ul>
+          </div>
+          <div class="logistics-card">
+            <h4>🌋 Tour Operators</h4>
+            <ul>
+              <li><strong>OX Expeditions</strong> — most popular, ~$60–80/person</li>
+              <li><strong>Wicho &amp; Charlie's</strong> — local favorite, great guides</li>
+              <li><strong>Tropicana Hostel Hike</strong> — budget option</li>
+              <li>Book 4–6 weeks out — weekend spots go fast</li>
+            </ul>
+          </div>
+          <div class="logistics-card">
+            <h4>💵 Money</h4>
+            <ul>
+              <li>Currency: <strong>Guatemalan Quetzal (Q)</strong></li>
+              <li>~Q7.7 per USD</li>
+              <li>Use bank ATMs in Antigua</li>
+              <li>Tour ~$65 · Hotel ~$30–80/night · Food ~$15/day</li>
+            </ul>
+          </div>
+          <div class="logistics-card">
+            <h4>📋 Visa + Entry</h4>
+            <ul>
+              <li>US citizens: <strong>no visa</strong> for stays under 90 days</li>
+              <li>Passport valid 6+ months beyond return</li>
+              <li>Hep A + Typhoid vaccines recommended</li>
+            </ul>
+          </div>
+          <div class="logistics-card">
+            <h4>📶 Connectivity</h4>
+            <ul>
+              <li>Get a SIM at GUA airport: <strong>Tigo</strong> or <strong>Claro</strong></li>
+              <li>~$10–15 for a month of data</li>
+              <li>Zero signal on the mountain — download offline maps</li>
+              <li>WhatsApp for group coordination</li>
+            </ul>
+          </div>
+        </div>
       </div>
+
     </div>
   </section>
 
@@ -236,266 +268,177 @@
   <section id="packing" class="section">
     <div class="container">
       <h2 class="section-title">Packing List</h2>
-      <p class="section-sub">This is a high-altitude overnight hike — cold nights, hot days, volcanic ash. Pack smart.</p>
+      <p class="section-sub">High-altitude overnight hike — cold nights, hot days, volcanic ash. Pack smart.</p>
 
       <div class="pack-grid">
-
         <div class="pack-card">
-          <h3>🧥 Clothing (Layering is Key)</h3>
+          <h3>🧥 Clothing</h3>
           <ul>
-            <li><span class="required">MUST</span> Warm base layer (wool or synthetic) — top + bottom</li>
+            <li><span class="required">MUST</span> Warm base layer top + bottom</li>
             <li><span class="required">MUST</span> Mid layer fleece or down jacket</li>
             <li><span class="required">MUST</span> Waterproof/windproof outer shell</li>
-            <li><span class="required">MUST</span> Warm beanie + gloves (summit is near freezing)</li>
+            <li><span class="required">MUST</span> Warm beanie + gloves</li>
             <li><span class="required">MUST</span> Moisture-wicking hiking shirt (2x)</li>
-            <li><span class="required">MUST</span> Comfortable hiking pants or shorts</li>
-            <li><span class="required">MUST</span> Wool or thick hiking socks (2–3 pairs)</li>
-            <li>Lightweight town clothes for Antigua days</li>
+            <li><span class="required">MUST</span> Hiking pants or shorts</li>
+            <li><span class="required">MUST</span> Wool hiking socks (2–3 pairs)</li>
+            <li>Town clothes for Antigua days</li>
             <li>Flip flops / camp shoes</li>
           </ul>
         </div>
-
         <div class="pack-card">
           <h3>👟 Footwear</h3>
           <ul>
             <li><span class="required">MUST</span> Sturdy hiking boots with ankle support (broken in!)</li>
-            <li><span class="required">MUST</span> Gaiters — the descent through volcanic ash is brutal without them</li>
-            <li>Trekking poles — highly recommended for the descent</li>
+            <li><span class="required">MUST</span> Gaiters — volcanic ash descent is brutal without them</li>
+            <li>Trekking poles — highly recommended</li>
           </ul>
         </div>
-
         <div class="pack-card">
           <h3>🎒 Gear</h3>
           <ul>
-            <li><span class="required">MUST</span> 30–40L daypack for the hike</li>
-            <li><span class="required">MUST</span> Headlamp + extra batteries (summit is at 3–4 AM)</li>
-            <li><span class="required">MUST</span> Sleeping bag rated to -5°C / 23°F or warmer</li>
-            <li><span class="required">MUST</span> Water bottles or hydration bladder (3L capacity)</li>
-            <li>Trekking poles (many operators lend these)</li>
-            <li>Dry bags or pack cover for rain</li>
+            <li><span class="required">MUST</span> 30–40L daypack</li>
+            <li><span class="required">MUST</span> Headlamp + extra batteries (4 AM summit)</li>
+            <li><span class="required">MUST</span> Sleeping bag rated to -5°C / 23°F</li>
+            <li><span class="required">MUST</span> Water bottles or hydration bladder (3L)</li>
+            <li>Dry bag or rain cover</li>
           </ul>
         </div>
-
         <div class="pack-card">
           <h3>💊 Health + Safety</h3>
           <ul>
-            <li><span class="required">MUST</span> Altitude sickness meds (Diamox) — consult your doctor</li>
-            <li><span class="required">MUST</span> Ibuprofen / pain reliever</li>
-            <li><span class="required">MUST</span> Sunscreen SPF 50+ (UV is intense at altitude)</li>
+            <li><span class="required">MUST</span> Altitude sickness meds (Diamox) — ask your doctor</li>
+            <li><span class="required">MUST</span> Ibuprofen</li>
+            <li><span class="required">MUST</span> Sunscreen SPF 50+ (UV hits hard at altitude)</li>
             <li><span class="required">MUST</span> Lip balm with SPF</li>
-            <li><span class="required">MUST</span> Blister kit (moleskin, bandages)</li>
-            <li>Electrolyte tablets / Nuun tabs</li>
+            <li><span class="required">MUST</span> Blister kit (moleskin + bandages)</li>
+            <li>Electrolyte tablets</li>
             <li>Antidiarrheal + antacids</li>
-            <li>Hand sanitizer</li>
           </ul>
         </div>
-
         <div class="pack-card">
-          <h3>🍫 Food + Snacks for the Hike</h3>
+          <h3>🍫 Snacks</h3>
           <ul>
-            <li>High-energy snacks: trail mix, energy bars, chocolate</li>
-            <li>Instant oatmeal packets (nice with hot water at camp)</li>
+            <li>Trail mix, energy bars, chocolate</li>
+            <li>Instant oatmeal for camp mornings</li>
             <li>Dried fruit / nuts</li>
             <li>Instant coffee or tea packets</li>
-            <li><em>Most operators provide dinner + breakfast at camp — confirm what's included</em></li>
+            <li><em>Operators provide dinner + breakfast at camp</em></li>
           </ul>
         </div>
-
         <div class="pack-card">
-          <h3>📱 Electronics + Docs</h3>
+          <h3>📱 Docs + Electronics</h3>
           <ul>
-            <li><span class="required">MUST</span> Passport (valid 6+ months beyond travel date)</li>
-            <li><span class="required">MUST</span> Phone + offline maps downloaded (Maps.me or Google Maps offline)</li>
-            <li>Portable battery pack / power bank</li>
+            <li><span class="required">MUST</span> Passport (valid 6+ months out)</li>
+            <li><span class="required">MUST</span> Phone + offline maps downloaded</li>
+            <li>Portable battery / power bank</li>
             <li>Camera / GoPro</li>
-            <li>Universal adapter (Guatemala uses US plugs, Type A/B)</li>
-            <li>AirTags or GPS tracker for bags</li>
+            <li>AirTags for bags</li>
           </ul>
         </div>
-
       </div>
 
       <div class="alert alert-green">
         <span class="alert-icon">✅</span>
         <div>
-          <strong>Operator rentals:</strong> Most Acatenango tour operators (OX Expeditions, Wicho &amp; Charlie's, etc.) rent sleeping bags, trekking poles, and gaiters if you don't want to pack them. Ask when booking.
+          <strong>Operator rentals:</strong> Most operators (OX Expeditions, Wicho &amp; Charlie's) rent sleeping bags, trekking poles, and gaiters. Ask when booking — saves serious pack weight.
         </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- LOGISTICS -->
-  <section id="logistics" class="section section-dark">
-    <div class="container">
-      <h2 class="section-title light">Logistics</h2>
-
-      <div class="logistics-grid">
-
-        <div class="logistics-card">
-          <h3>✈️ Getting There</h3>
-          <ul>
-            <li>Fly into <strong>GUA (La Aurora Intl)</strong>, Guatemala City</li>
-            <li>Major US hubs: Miami (AA), Houston (UA), Atlanta (DL), Dallas (AA)</li>
-            <li>Non-stop from several US cities, ~3–5 hr flight</li>
-            <li>Take a shared shuttle to Antigua (~$10–12/person, 45 min) — book at airport or arrange in advance</li>
-          </ul>
-        </div>
-
-        <div class="logistics-card">
-          <h3>🏨 Where to Stay in Antigua</h3>
-          <ul>
-            <li><strong>Hostel/Budget:</strong> Yellow House Hostel, The Terrace Hostel</li>
-            <li><strong>Mid-range:</strong> Hotel Sor Juana, Porta Hotel Antigua</li>
-            <li><strong>Splurge:</strong> Casa Santo Domingo, Camino Real Antigua</li>
-            <li>Book downtown / near Parque Central for walkability</li>
-          </ul>
-        </div>
-
-        <div class="logistics-card">
-          <h3>🌋 Tour Operators</h3>
-          <ul>
-            <li><strong>OX Expeditions</strong> — most popular, well organized, ~$60–80/person</li>
-            <li><strong>Wicho &amp; Charlie's</strong> — local favorite, great guides</li>
-            <li><strong>Tropicana Hostel Hike</strong> — budget-friendly option</li>
-            <li>All operators include: shuttle, guides, camping gear, meals at camp</li>
-            <li><strong>Book 4–6 weeks out.</strong> Weekend spots go fast.</li>
-          </ul>
-        </div>
-
-        <div class="logistics-card">
-          <h3>💵 Money + Budget</h3>
-          <ul>
-            <li>Currency: <strong>Guatemalan Quetzal (GTQ / Q)</strong></li>
-            <li>~Q7.7 per USD (as of early 2026)</li>
-            <li>ATMs available in Antigua — use bank ATMs, not standalone kiosks</li>
-            <li>Estimated costs per person:
-              <ul>
-                <li>Acatenango tour: ~$60–80</li>
-                <li>Hotel 3 nights: ~$30–80/night</li>
-                <li>Food: ~$10–20/day</li>
-                <li>Shuttles: ~$25 total</li>
-              </ul>
-            </li>
-          </ul>
-        </div>
-
-        <div class="logistics-card">
-          <h3>📋 Visa + Entry</h3>
-          <ul>
-            <li>US citizens: <strong>no visa required</strong> for stays under 90 days</li>
-            <li>Passport must be valid 6+ months beyond return date</li>
-            <li>No vaccinations required, but Hep A + Typhoid recommended</li>
-            <li>Guatemala is part of the CA-4 agreement (shared entry with El Salvador, Honduras, Nicaragua)</li>
-          </ul>
-        </div>
-
-        <div class="logistics-card">
-          <h3>📶 Connectivity</h3>
-          <ul>
-            <li>Get a local SIM at GUA airport: <strong>Tigo</strong> or <strong>Claro</strong> are best</li>
-            <li>~$10–15 for a month of data</li>
-            <li>No signal on the mountain — download offline maps before the hike</li>
-            <li>WhatsApp works great for group coordination</li>
-          </ul>
-        </div>
-
       </div>
     </div>
   </section>
 
   <!-- FOOD -->
-  <section id="food" class="section">
+  <section id="food" class="section section-dark">
     <div class="container">
-      <h2 class="section-title">Food &amp; Drinks in Antigua</h2>
-      <p class="section-sub">Antigua punches way above its size for food. Here's where to go.</p>
+      <h2 class="section-title light">Food &amp; Drinks in Antigua</h2>
+      <p class="section-sub light-sub">Antigua punches way above its size for food.</p>
 
       <div class="food-grid">
-        <div class="food-card">
+        <div class="food-card dark-card">
           <div class="food-tag">Breakfast</div>
           <h3>Fernando's Kaffee</h3>
-          <p>The move for breakfast. Fresh fruit, amazing coffee, and huevos rancheros. Lines form early — go before 8 AM.</p>
+          <p>The move for breakfast. Fresh fruit, amazing coffee, huevos rancheros. Go before 8 AM.</p>
         </div>
-        <div class="food-card">
-          <div class="food-tag">Coffee</div>
+        <div class="food-card dark-card">
+          <div class="food-tag">Coffee + Late Night</div>
           <h3>Café No Sé</h3>
-          <p>A Antigua institution — mezcal bar and coffee spot. Known for their illegal mezcal and live music at night.</p>
+          <p>An Antigua institution — mezcal bar, coffee spot, live music. Known for their "illegal" mezcal selection.</p>
         </div>
-        <div class="food-card">
-          <div class="food-tag">Lunch/Dinner</div>
+        <div class="food-card dark-card">
+          <div class="food-tag">Local Food</div>
           <h3>Hector's Bistro</h3>
-          <p>Best local Guatemalan food. Try the pepián (traditional stew) and freshly made tortillas. Very affordable.</p>
+          <p>Best authentic Guatemalan food. Try the pepián stew and freshly made tortillas. Very affordable.</p>
         </div>
-        <div class="food-card">
-          <div class="food-tag">Dinner</div>
+        <div class="food-card dark-card">
+          <div class="food-tag">Group Dinner</div>
           <h3>Restaurante Welten</h3>
-          <p>Mid-range European/Guatemalan fusion in a beautiful colonial courtyard. Great for the group dinner on Day 1.</p>
+          <p>European/Guatemalan fusion in a colonial courtyard. Perfect for the Day 1 group dinner.</p>
         </div>
-        <div class="food-card">
-          <div class="food-tag">Drinks / Rooftop</div>
+        <div class="food-card dark-card">
+          <div class="food-tag">Rooftop Bar</div>
           <h3>Sky Cafe</h3>
-          <p>Rooftop bar with volcano views. Perfect for celebratory drinks after summit day. Order the mojitos.</p>
+          <p>Rooftop bar with volcano views. Ideal for celebratory drinks after summit day. Get the mojitos.</p>
         </div>
-        <div class="food-card">
+        <div class="food-card dark-card">
           <div class="food-tag">Must Try</div>
           <h3>Antigua Street Food</h3>
-          <p>Elotes (corn), tostadas, and tamales from market stalls near Parque Central. Q5–15 a piece. Don't skip it.</p>
+          <p>Elotes, tostadas, and tamales near Parque Central. Q5–15 each. Non-negotiable.</p>
         </div>
       </div>
 
       <div class="alert">
         <span class="alert-icon">☕</span>
         <div>
-          <strong>Guatemala coffee is world-class.</strong> Antigua's volcanic soil produces some of the best beans on the planet. Pick up a bag to bring home — La Hermosa or Filicafé are local roasters with shops in Antigua.
+          <strong>Guatemala coffee is world-class.</strong> Antigua's volcanic soil grows some of the best beans on the planet. Pick up a bag to bring home — La Hermosa and Filicafé are great local roasters.
         </div>
       </div>
     </div>
   </section>
 
   <!-- TIPS -->
-  <section id="tips" class="section section-dark">
+  <section id="tips" class="section">
     <div class="container">
-      <h2 class="section-title light">Pro Tips</h2>
+      <h2 class="section-title">Pro Tips</h2>
 
       <div class="tips-grid">
-        <div class="tip">
+        <div class="tip light-tip">
           <div class="tip-num">01</div>
           <h3>Train Before You Go</h3>
-          <p>Acatenango is not a casual hike. 1,500 m of gain in a day at altitude will humble you. Do stair workouts, weighted hikes, or Zone 2 cardio in the weeks before. Your knees will thank you on the descent.</p>
+          <p>Acatenango is not a casual hike. 1,500 m of gain at altitude will humble you. Do stair workouts, weighted hikes, or Zone 2 cardio in the weeks before.</p>
         </div>
-        <div class="tip">
+        <div class="tip light-tip">
           <div class="tip-num">02</div>
           <h3>Diamox Is Your Friend</h3>
-          <p>Altitude sickness is real at 3,900+ m. Talk to your doctor about Acetazolamide (Diamox) — many experienced hikers take it prophylactically. Start 1–2 days before the hike.</p>
+          <p>Altitude sickness is real at 3,900+ m. Talk to your doctor about Acetazolamide (Diamox) and start 1–2 days before the hike.</p>
         </div>
-        <div class="tip">
+        <div class="tip light-tip">
           <div class="tip-num">03</div>
           <h3>Layers, Layers, Layers</h3>
-          <p>It's 28°C at the trailhead and -2°C at camp at night. You'll strip down going up and pile everything on at sunset. Don't leave a single warm layer behind.</p>
+          <p>It's 28°C at the trailhead and -2°C at camp at night. You'll strip down going up and pile everything on at sunset.</p>
         </div>
-        <div class="tip">
+        <div class="tip light-tip">
           <div class="tip-num">04</div>
           <h3>Hike Your Own Pace</h3>
-          <p>There's no glory in pushing too hard and getting altitude sickness. The group should agree beforehand — <em>we stick together, no ego, slowest person sets the pace.</em></p>
+          <p>No glory in burning out and getting altitude sickness. Agree beforehand — slowest person sets the pace, no ego.</p>
         </div>
-        <div class="tip">
+        <div class="tip light-tip">
           <div class="tip-num">05</div>
           <h3>Cash Is King</h3>
-          <p>Many places in Antigua and all trailhead services are cash-only. Withdraw Q1,000–1,500 before leaving Antigua. ATMs at the airport and Parque Central area are reliable.</p>
+          <p>Many spots in Antigua and all trailhead services are cash-only. Withdraw Q1,000–1,500 before leaving Antigua.</p>
         </div>
-        <div class="tip">
+        <div class="tip light-tip">
           <div class="tip-num">06</div>
-          <h3>Water Purification</h3>
-          <p>Carry 3L capacity and consider purification tablets or a Sawyer filter. The water at base camp is typically provided by operators but it's good practice to have backup.</p>
-        </div>
-        <div class="tip">
-          <div class="tip-num">07</div>
           <h3>Download Offline Maps</h3>
-          <p>You'll have zero signal on the mountain. Download Google Maps or Maps.me offline for the Antigua area and the Acatenango region before you leave Wi-Fi.</p>
+          <p>Zero signal on the mountain. Download Google Maps or Maps.me offline for Antigua + Acatenango region before you leave Wi-Fi.</p>
         </div>
-        <div class="tip">
-          <div class="tip-num">08</div>
+        <div class="tip light-tip">
+          <div class="tip-num">07</div>
           <h3>Fuego at Night = Insane</h3>
-          <p>One of the most underrated parts of this hike. Fuego erupts every 15–30 min. Set up your phone on something stable and do long exposures. Bring a portable tripod or mini tripod.</p>
+          <p>Fuego erupts every 15–30 min all night. Set your phone on something stable and do long exposures. Bring a mini tripod.</p>
+        </div>
+        <div class="tip light-tip">
+          <div class="tip-num">08</div>
+          <h3>Water Purification</h3>
+          <p>Carry 3L capacity and bring purification tablets or a Sawyer filter as backup. Hydration at altitude is critical.</p>
         </div>
       </div>
     </div>
@@ -505,10 +448,65 @@
   <footer class="footer">
     <div class="container">
       <p class="footer-title">Guatemala 2026</p>
-      <p>May 22–25 &nbsp;·&nbsp; Antigua &amp; Acatenango &nbsp;·&nbsp; The Crew</p>
-      <p class="footer-note">Let's get this bag. 🎒</p>
+      <p>May 22–25 &nbsp;·&nbsp; Antigua &amp; Acatenango</p>
+      <div class="footer-links">
+        <a href="crew.html">The Crew</a>
+        <a href="facts.html">Fun Facts</a>
+      </div>
+      <p class="footer-note">Let's get it.</p>
     </div>
   </footer>
+
+  <script>
+    const STORAGE_KEY = 'guat2026_itinerary';
+
+    // Load saved content on page load
+    window.addEventListener('DOMContentLoaded', () => {
+      const saved = JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}');
+      document.querySelectorAll('.editable[data-key]').forEach(el => {
+        const key = el.getAttribute('data-key');
+        if (saved[key] !== undefined) {
+          el.innerHTML = saved[key];
+        }
+      });
+    });
+
+    // Save content on any input
+    function saveEdits() {
+      const data = {};
+      document.querySelectorAll('.editable[data-key]').forEach(el => {
+        data[el.getAttribute('data-key')] = el.innerHTML;
+      });
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+    }
+
+    let editMode = false;
+
+    function toggleEditMode() {
+      editMode = !editMode;
+      const btn = document.getElementById('editToggle');
+      const editables = document.querySelectorAll('.editable');
+
+      if (editMode) {
+        editables.forEach(el => {
+          el.contentEditable = 'true';
+          el.addEventListener('input', saveEdits);
+        });
+        btn.textContent = '💾 Save & Exit';
+        btn.classList.add('edit-btn-active');
+        document.getElementById('itineraryTimeline').classList.add('edit-active');
+      } else {
+        editables.forEach(el => {
+          el.contentEditable = 'false';
+          el.removeEventListener('input', saveEdits);
+        });
+        saveEdits();
+        btn.textContent = '✏️ Edit Mode';
+        btn.classList.remove('edit-btn-active');
+        document.getElementById('itineraryTimeline').classList.remove('edit-active');
+      }
+    }
+  </script>
 
 </body>
 </html>
