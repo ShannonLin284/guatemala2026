@@ -3,12 +3,11 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Guatemala 2026 — Acatenango</title>
+  <title>guate[bueno] 2026</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
 
-  <!-- CUSTOM CURSOR -->
   <div class="cursor-dot" id="cursorDot"></div>
   <div class="cursor-ring" id="cursorRing"></div>
 
@@ -17,7 +16,7 @@
     <div class="hero-bg"></div>
     <div class="hero-gradient"></div>
     <div class="hero-top">
-      <span class="hero-logo">GT '26</span>
+      <span class="hero-logo">guate<span class="logo-bracket">[bueno]</span></span>
       <span class="hero-date-badge">May 22–25, 2026</span>
     </div>
     <div class="hero-content">
@@ -40,10 +39,10 @@
 
   <!-- NAV -->
   <nav class="sticky-nav">
-    <a class="nav-logo" href="index.html">GT '26</a>
+    <a class="nav-logo" href="index.html">guate<span class="logo-bracket">[bueno]</span></a>
     <a href="#itinerary">Itinerary</a>
     <a href="#packing">Packing</a>
-    <a href="#food">Food</a>
+    <a href="#places">Places</a>
     <a href="#tips">Tips</a>
     <div class="nav-spacer"></div>
     <a href="crew.html">The Crew</a>
@@ -58,9 +57,9 @@
         <div class="section-header">
           <p class="section-label"><span>01</span> Day by Day</p>
           <h2 class="section-title">Itinerary</h2>
-          <p class="section-sub">Click a day to expand. Hit edit mode to update any details — saves to your browser.</p>
+          <p class="section-sub">Click a day to expand. Hit Edit Mode to update any details — saves to your browser.</p>
         </div>
-        <button class="btn-ghost" id="editToggle" onclick="toggleEditMode()">✏️ Edit Mode</button>
+        <button class="btn-ghost" id="editToggle" onclick="toggleEditMode()">Edit Mode</button>
       </div>
 
       <div class="timeline" id="itineraryTimeline">
@@ -80,7 +79,7 @@
                 <div class="item-right">
                   <span class="desc editable" data-key="d1-d1">Fly into GUA (La Aurora International). Aim for morning arrivals to maximize the day. Book a shared shuttle to Antigua (~Q80–100 / ~$10–12 USD, ~45 min).</span>
                   <div class="item-links" id="il-d1-i1"></div>
-                  <button class="add-link-btn" onclick="openLinkForm('d1-i1', this)">+ link place</button>
+                  <button class="add-link-btn" onclick="openLinkForm('d1-i1', this)">+ link</button>
                   <div class="link-form" id="lf-d1-i1">
                     <input type="text" placeholder="Label  (e.g. La Aurora Airport)" id="ll-d1-i1" />
                     <input type="url"  placeholder="URL (Google Maps, website...)" id="lu-d1-i1" />
@@ -96,7 +95,7 @@
                 <div class="item-right">
                   <span class="desc editable" data-key="d1-d2">Check into hotel in Antigua. Drop bags. Recommended area: near Parque Central — walkable to everything.</span>
                   <div class="item-links" id="il-d1-i2"></div>
-                  <button class="add-link-btn" onclick="openLinkForm('d1-i2', this)">+ link place</button>
+                  <button class="add-link-btn" onclick="openLinkForm('d1-i2', this)">+ link</button>
                   <div class="link-form" id="lf-d1-i2">
                     <input type="text" placeholder="Label" id="ll-d1-i2" />
                     <input type="url"  placeholder="URL" id="lu-d1-i2" />
@@ -110,9 +109,9 @@
               <li class="schedule-item" data-item-key="d1-i3">
                 <span class="time editable" data-key="d1-t3">4:00 PM</span>
                 <div class="item-right">
-                  <span class="desc editable" data-key="d1-d3">Walk Antigua's Parque Central and Arco de Santa Catalina. Pick up any last-minute gear at Nim Po't or a local outfitter.</span>
+                  <span class="desc editable" data-key="d1-d3">Walk Antigua's Parque Central and Arco de Santa Catalina. Pick up any last-minute gear at a local outfitter.</span>
                   <div class="item-links" id="il-d1-i3"></div>
-                  <button class="add-link-btn" onclick="openLinkForm('d1-i3', this)">+ link place</button>
+                  <button class="add-link-btn" onclick="openLinkForm('d1-i3', this)">+ link</button>
                   <div class="link-form" id="lf-d1-i3">
                     <input type="text" placeholder="Label" id="ll-d1-i3" />
                     <input type="url"  placeholder="URL" id="lu-d1-i3" />
@@ -126,9 +125,9 @@
               <li class="schedule-item" data-item-key="d1-i4">
                 <span class="time editable" data-key="d1-t4">6:00 PM</span>
                 <div class="item-right">
-                  <span class="desc editable" data-key="d1-d4">Group dinner — see Food section. Do a final packing check and confirm pickup time with your tour operator.</span>
+                  <span class="desc editable" data-key="d1-d4">Group dinner — see the Places doc for picks. Do a final packing check and confirm pickup time with your tour operator.</span>
                   <div class="item-links" id="il-d1-i4"></div>
-                  <button class="add-link-btn" onclick="openLinkForm('d1-i4', this)">+ link place</button>
+                  <button class="add-link-btn" onclick="openLinkForm('d1-i4', this)">+ link</button>
                   <div class="link-form" id="lf-d1-i4">
                     <input type="text" placeholder="Label" id="ll-d1-i4" />
                     <input type="url"  placeholder="URL" id="lu-d1-i4" />
@@ -144,7 +143,7 @@
                 <div class="item-right">
                   <span class="desc editable" data-key="d1-d5">Early to bed. Big hike tomorrow — you'll want 7–8 hrs sleep before a 5 AM wake-up.</span>
                   <div class="item-links" id="il-d1-i5"></div>
-                  <button class="add-link-btn" onclick="openLinkForm('d1-i5', this)">+ link place</button>
+                  <button class="add-link-btn" onclick="openLinkForm('d1-i5', this)">+ link</button>
                   <div class="link-form" id="lf-d1-i5">
                     <input type="text" placeholder="Label" id="ll-d1-i5" />
                     <input type="url"  placeholder="URL" id="lu-d1-i5" />
@@ -175,7 +174,7 @@
                 <div class="item-right">
                   <span class="desc editable" data-key="d2-d1">Wake up. Eat a solid breakfast. Have your pack ready the night before.</span>
                   <div class="item-links" id="il-d2-i1"></div>
-                  <button class="add-link-btn" onclick="openLinkForm('d2-i1', this)">+ link place</button>
+                  <button class="add-link-btn" onclick="openLinkForm('d2-i1', this)">+ link</button>
                   <div class="link-form" id="lf-d2-i1">
                     <input type="text" placeholder="Label" id="ll-d2-i1" />
                     <input type="url"  placeholder="URL" id="lu-d2-i1" />
@@ -191,7 +190,7 @@
                 <div class="item-right">
                   <span class="desc editable" data-key="d2-d2">Shuttle pickup from Antigua to La Soledad trailhead (~1.5 hrs). Meet your guides.</span>
                   <div class="item-links" id="il-d2-i2"></div>
-                  <button class="add-link-btn" onclick="openLinkForm('d2-i2', this)">+ link place</button>
+                  <button class="add-link-btn" onclick="openLinkForm('d2-i2', this)">+ link</button>
                   <div class="link-form" id="lf-d2-i2">
                     <input type="text" placeholder="Label" id="ll-d2-i2" />
                     <input type="url"  placeholder="URL" id="lu-d2-i2" />
@@ -205,9 +204,9 @@
               <li class="schedule-item" data-item-key="d2-i3">
                 <span class="time editable" data-key="d2-t3">7:30 AM</span>
                 <div class="item-right">
-                  <span class="desc editable" data-key="d2-d3">Hike begins. Trail gains ~1,500 m over ~8 km. 4–6 hrs of steady uphill: corn fields → cloud forest → volcanic terrain. Pace yourself.</span>
+                  <span class="desc editable" data-key="d2-d3">Hike begins. Trail gains ~1,500 m over ~8 km. 4–6 hrs of steady uphill: corn fields, cloud forest, volcanic terrain. Pace yourself.</span>
                   <div class="item-links" id="il-d2-i3"></div>
-                  <button class="add-link-btn" onclick="openLinkForm('d2-i3', this)">+ link place</button>
+                  <button class="add-link-btn" onclick="openLinkForm('d2-i3', this)">+ link</button>
                   <div class="link-form" id="lf-d2-i3">
                     <input type="text" placeholder="Label" id="ll-d2-i3" />
                     <input type="url"  placeholder="URL" id="lu-d2-i3" />
@@ -223,7 +222,7 @@
                 <div class="item-right">
                   <span class="desc editable" data-key="d2-d4">Arrive at Base Camp (~3,700 m). Set up tents, eat lunch. Rest and acclimatize. Fuego erupts across the valley every 15–30 min.</span>
                   <div class="item-links" id="il-d2-i4"></div>
-                  <button class="add-link-btn" onclick="openLinkForm('d2-i4', this)">+ link place</button>
+                  <button class="add-link-btn" onclick="openLinkForm('d2-i4', this)">+ link</button>
                   <div class="link-form" id="lf-d2-i4">
                     <input type="text" placeholder="Label" id="ll-d2-i4" />
                     <input type="url"  placeholder="URL" id="lu-d2-i4" />
@@ -239,7 +238,7 @@
                 <div class="item-right">
                   <span class="desc editable" data-key="d2-d5">Hot dinner at camp (soup + rice/pasta provided). Layer up — it drops to 0–5°C after sunset.</span>
                   <div class="item-links" id="il-d2-i5"></div>
-                  <button class="add-link-btn" onclick="openLinkForm('d2-i5', this)">+ link place</button>
+                  <button class="add-link-btn" onclick="openLinkForm('d2-i5', this)">+ link</button>
                   <div class="link-form" id="lf-d2-i5">
                     <input type="text" placeholder="Label" id="ll-d2-i5" />
                     <input type="url"  placeholder="URL" id="lu-d2-i5" />
@@ -255,7 +254,7 @@
                 <div class="item-right">
                   <span class="desc editable" data-key="d2-d6">Watch Fuego glow red against the night sky. Milky Way is visible. Sleep by 8 PM — guides wake you at 3 AM.</span>
                   <div class="item-links" id="il-d2-i6"></div>
-                  <button class="add-link-btn" onclick="openLinkForm('d2-i6', this)">+ link place</button>
+                  <button class="add-link-btn" onclick="openLinkForm('d2-i6', this)">+ link</button>
                   <div class="link-form" id="lf-d2-i6">
                     <input type="text" placeholder="Label" id="ll-d2-i6" />
                     <input type="url"  placeholder="URL" id="lu-d2-i6" />
@@ -286,7 +285,7 @@
                 <div class="item-right">
                   <span class="desc editable" data-key="d3-d1">Guides wake the group. Layer everything. Headlamps on. Summit push begins (~1.5–2 hrs). Final stretch is loose ash — use trekking poles.</span>
                   <div class="item-links" id="il-d3-i1"></div>
-                  <button class="add-link-btn" onclick="openLinkForm('d3-i1', this)">+ link place</button>
+                  <button class="add-link-btn" onclick="openLinkForm('d3-i1', this)">+ link</button>
                   <div class="link-form" id="lf-d3-i1">
                     <input type="text" placeholder="Label" id="ll-d3-i1" />
                     <input type="url"  placeholder="URL" id="lu-d3-i1" />
@@ -302,7 +301,7 @@
                 <div class="item-right">
                   <span class="desc editable" data-key="d3-d2">Summit at 3,976 m. 360° views: Fuego, Agua, Lake Atitlán, Pacific coast. Sunrise paints everything gold. This is the moment.</span>
                   <div class="item-links" id="il-d3-i2"></div>
-                  <button class="add-link-btn" onclick="openLinkForm('d3-i2', this)">+ link place</button>
+                  <button class="add-link-btn" onclick="openLinkForm('d3-i2', this)">+ link</button>
                   <div class="link-form" id="lf-d3-i2">
                     <input type="text" placeholder="Label" id="ll-d3-i2" />
                     <input type="url"  placeholder="URL" id="lu-d3-i2" />
@@ -318,7 +317,7 @@
                 <div class="item-right">
                   <span class="desc editable" data-key="d3-d3">Back to base camp. Eat breakfast. Break down tents. Guides pack up camp.</span>
                   <div class="item-links" id="il-d3-i3"></div>
-                  <button class="add-link-btn" onclick="openLinkForm('d3-i3', this)">+ link place</button>
+                  <button class="add-link-btn" onclick="openLinkForm('d3-i3', this)">+ link</button>
                   <div class="link-form" id="lf-d3-i3">
                     <input type="text" placeholder="Label" id="ll-d3-i3" />
                     <input type="url"  placeholder="URL" id="lu-d3-i3" />
@@ -332,9 +331,9 @@
               <li class="schedule-item" data-item-key="d3-i4">
                 <span class="time editable" data-key="d3-t4">9:00 AM</span>
                 <div class="item-right">
-                  <span class="desc editable" data-key="d3-d4">Begin descent. Faster than ascent but brutal on the knees — gaiters essential for volcanic ash sections. ~3–4 hrs down.</span>
+                  <span class="desc editable" data-key="d3-d4">Begin descent. Faster than ascent but brutal on the knees — gaiters essential for the volcanic ash sections. ~3–4 hrs down.</span>
                   <div class="item-links" id="il-d3-i4"></div>
-                  <button class="add-link-btn" onclick="openLinkForm('d3-i4', this)">+ link place</button>
+                  <button class="add-link-btn" onclick="openLinkForm('d3-i4', this)">+ link</button>
                   <div class="link-form" id="lf-d3-i4">
                     <input type="text" placeholder="Label" id="ll-d3-i4" />
                     <input type="url"  placeholder="URL" id="lu-d3-i4" />
@@ -350,7 +349,7 @@
                 <div class="item-right">
                   <span class="desc editable" data-key="d3-d5">Back at trailhead. Shuttle to Antigua. Clean up, rest, recovery mode.</span>
                   <div class="item-links" id="il-d3-i5"></div>
-                  <button class="add-link-btn" onclick="openLinkForm('d3-i5', this)">+ link place</button>
+                  <button class="add-link-btn" onclick="openLinkForm('d3-i5', this)">+ link</button>
                   <div class="link-form" id="lf-d3-i5">
                     <input type="text" placeholder="Label" id="ll-d3-i5" />
                     <input type="url"  placeholder="URL" id="lu-d3-i5" />
@@ -364,9 +363,9 @@
               <li class="schedule-item" data-item-key="d3-i6">
                 <span class="time editable" data-key="d3-t6">Evening</span>
                 <div class="item-right">
-                  <span class="desc editable" data-key="d3-d6">Celebratory dinner in Antigua. Rooftop bars — Sky Cafe and La Casserole are fan favorites. You earned it.</span>
+                  <span class="desc editable" data-key="d3-d6">Celebratory dinner in Antigua. Check the Places doc for where to go. You earned it.</span>
                   <div class="item-links" id="il-d3-i6"></div>
-                  <button class="add-link-btn" onclick="openLinkForm('d3-i6', this)">+ link place</button>
+                  <button class="add-link-btn" onclick="openLinkForm('d3-i6', this)">+ link</button>
                   <div class="link-form" id="lf-d3-i6">
                     <input type="text" placeholder="Label" id="ll-d3-i6" />
                     <input type="url"  placeholder="URL" id="lu-d3-i6" />
@@ -395,9 +394,9 @@
               <li class="schedule-item" data-item-key="d4-i1">
                 <span class="time editable" data-key="d4-t1">Morning</span>
                 <div class="item-right">
-                  <span class="desc editable" data-key="d4-d1">Slow morning, big breakfast. Walk Mercado de Artesanías — pick up textiles, coffee, and souvenirs.</span>
+                  <span class="desc editable" data-key="d4-d1">Slow morning, big breakfast. Walk Mercado de Artesanias — pick up textiles, coffee, and souvenirs.</span>
                   <div class="item-links" id="il-d4-i1"></div>
-                  <button class="add-link-btn" onclick="openLinkForm('d4-i1', this)">+ link place</button>
+                  <button class="add-link-btn" onclick="openLinkForm('d4-i1', this)">+ link</button>
                   <div class="link-form" id="lf-d4-i1">
                     <input type="text" placeholder="Label" id="ll-d4-i1" />
                     <input type="url"  placeholder="URL" id="lu-d4-i1" />
@@ -413,7 +412,7 @@
                 <div class="item-right">
                   <span class="desc editable" data-key="d4-d2">Optional: Cerro de la Cruz overlook or ruins of La Merced church before heading out.</span>
                   <div class="item-links" id="il-d4-i2"></div>
-                  <button class="add-link-btn" onclick="openLinkForm('d4-i2', this)">+ link place</button>
+                  <button class="add-link-btn" onclick="openLinkForm('d4-i2', this)">+ link</button>
                   <div class="link-form" id="lf-d4-i2">
                     <input type="text" placeholder="Label" id="ll-d4-i2" />
                     <input type="url"  placeholder="URL" id="lu-d4-i2" />
@@ -427,9 +426,9 @@
               <li class="schedule-item" data-item-key="d4-i3">
                 <span class="time editable" data-key="d4-t3">Afternoon</span>
                 <div class="item-right">
-                  <span class="desc editable" data-key="d4-d3">Shuttle back to GUA airport for flights home. Book shuttle at least 3 hrs before departure.</span>
+                  <span class="desc editable" data-key="d4-d3">Shuttle back to GUA airport. Book the shuttle at least 3 hrs before departure. 2 hrs early at the airport is plenty.</span>
                   <div class="item-links" id="il-d4-i3"></div>
-                  <button class="add-link-btn" onclick="openLinkForm('d4-i3', this)">+ link place</button>
+                  <button class="add-link-btn" onclick="openLinkForm('d4-i3', this)">+ link</button>
                   <div class="link-form" id="lf-d4-i3">
                     <input type="text" placeholder="Label" id="ll-d4-i3" />
                     <input type="url"  placeholder="URL" id="lu-d4-i3" />
@@ -446,69 +445,6 @@
         </div>
 
       </div><!-- /timeline -->
-
-      <!-- LOGISTICS -->
-      <div class="logistics-block">
-        <div class="logistics-title-row">
-          <p class="section-label"><span>02</span> Getting There</p>
-          <h3 class="section-title" style="font-size:1.6rem;">Logistics</h3>
-        </div>
-        <div class="logistics-grid">
-          <div class="logistics-card">
-            <h4>✈️ Flights</h4>
-            <ul>
-              <li>Fly into <strong>GUA (La Aurora Intl)</strong>, Guatemala City</li>
-              <li>Hubs: Miami (AA), Houston (UA), Atlanta (DL)</li>
-              <li>~3–5 hr flight, non-stop from several US cities</li>
-              <li>Shuttle to Antigua: ~$10–12/person, 45 min</li>
-            </ul>
-          </div>
-          <div class="logistics-card">
-            <h4>🏨 Hotels</h4>
-            <ul>
-              <li><strong>Budget:</strong> Yellow House Hostel, The Terrace</li>
-              <li><strong>Mid:</strong> Hotel Sor Juana, Porta Hotel</li>
-              <li><strong>Splurge:</strong> Casa Santo Domingo</li>
-              <li>Book near Parque Central</li>
-            </ul>
-          </div>
-          <div class="logistics-card">
-            <h4>🌋 Tour Operators</h4>
-            <ul>
-              <li><strong>OX Expeditions</strong> — ~$60–80/person</li>
-              <li><strong>Wicho &amp; Charlie's</strong> — local favorite</li>
-              <li><strong>Tropicana Hostel</strong> — budget option</li>
-              <li>Book 4–6 weeks out, weekend spots go fast</li>
-            </ul>
-          </div>
-          <div class="logistics-card">
-            <h4>💵 Money</h4>
-            <ul>
-              <li><strong>Guatemalan Quetzal (Q)</strong> — ~Q7.7/USD</li>
-              <li>Use bank ATMs in Antigua</li>
-              <li>Tour ~$65 · Hotel ~$30–80/night</li>
-              <li>Food ~$15/day · Shuttles ~$25 total</li>
-            </ul>
-          </div>
-          <div class="logistics-card">
-            <h4>📋 Entry</h4>
-            <ul>
-              <li>US: <strong>no visa</strong> for stays under 90 days</li>
-              <li>Passport valid 6+ months beyond return</li>
-              <li>Hep A + Typhoid vaccines recommended</li>
-            </ul>
-          </div>
-          <div class="logistics-card">
-            <h4>📶 SIM + Data</h4>
-            <ul>
-              <li>Get SIM at GUA airport: <strong>Tigo</strong> or <strong>Claro</strong></li>
-              <li>~$10–15/month data plan</li>
-              <li>Zero signal on the mountain — offline maps essential</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-
     </div>
   </section>
 
@@ -516,35 +452,35 @@
   <section id="packing" class="section section-border">
     <div class="container">
       <div class="section-header">
-        <p class="section-label"><span>03</span> Gear</p>
+        <p class="section-label"><span>02</span> Gear</p>
         <h2 class="section-title">Packing List</h2>
-        <p class="section-sub">High-altitude overnight hike — cold nights, hot days, volcanic ash. The <span style="color:var(--accent);font-weight:700;">MUST</span> items are non-negotiable.</p>
+        <p class="section-sub">High-altitude overnight hike — cold nights, hot days, volcanic ash. <span style="color:var(--accent);font-weight:700;">MUST</span> items are non-negotiable.</p>
       </div>
       <div class="pack-grid">
         <div class="pack-card">
-          <h3>🧥 Clothing</h3>
+          <h3>Clothing</h3>
           <ul>
             <li><span class="required">MUST</span> Warm base layer (top + bottom)</li>
             <li><span class="required">MUST</span> Mid layer fleece or down jacket</li>
             <li><span class="required">MUST</span> Waterproof/windproof shell</li>
             <li><span class="required">MUST</span> Beanie + gloves</li>
-            <li><span class="required">MUST</span> Moisture-wicking hiking shirt (×2)</li>
+            <li><span class="required">MUST</span> Moisture-wicking hiking shirt (x2)</li>
             <li><span class="required">MUST</span> Hiking pants or shorts</li>
             <li><span class="required">MUST</span> Wool/thick socks (2–3 pairs)</li>
             <li>Town clothes for Antigua days</li>
           </ul>
         </div>
         <div class="pack-card">
-          <h3>👟 Footwear</h3>
+          <h3>Footwear</h3>
           <ul>
-            <li><span class="required">MUST</span> Hiking boots, ankle support (broken in!)</li>
+            <li><span class="required">MUST</span> Hiking boots, ankle support (broken in)</li>
             <li><span class="required">MUST</span> Gaiters — volcanic ash descent is brutal</li>
             <li>Trekking poles — highly recommended</li>
             <li>Flip flops or camp shoes</li>
           </ul>
         </div>
         <div class="pack-card">
-          <h3>🎒 Gear</h3>
+          <h3>Gear</h3>
           <ul>
             <li><span class="required">MUST</span> 30–40L daypack</li>
             <li><span class="required">MUST</span> Headlamp + extra batteries (4 AM summit)</li>
@@ -554,7 +490,7 @@
           </ul>
         </div>
         <div class="pack-card">
-          <h3>💊 Health</h3>
+          <h3>Health</h3>
           <ul>
             <li><span class="required">MUST</span> Altitude meds (Diamox) — talk to your doctor</li>
             <li><span class="required">MUST</span> Ibuprofen</li>
@@ -564,17 +500,17 @@
           </ul>
         </div>
         <div class="pack-card">
-          <h3>🍫 Trail Snacks</h3>
+          <h3>Trail Snacks</h3>
           <ul>
             <li>Trail mix, energy bars, chocolate</li>
             <li>Instant oatmeal for camp mornings</li>
             <li>Dried fruit / nuts</li>
             <li>Instant coffee or tea packets</li>
-            <li><em>Operators provide dinner + breakfast at camp</em></li>
+            <li>Operators provide dinner + breakfast at camp</li>
           </ul>
         </div>
         <div class="pack-card">
-          <h3>📱 Docs + Tech</h3>
+          <h3>Docs + Tech</h3>
           <ul>
             <li><span class="required">MUST</span> Passport (valid 6+ months out)</li>
             <li><span class="required">MUST</span> Phone + offline maps downloaded</li>
@@ -585,56 +521,23 @@
         </div>
       </div>
       <div class="alert alert-green" style="margin-top:2rem;">
-        <span class="alert-icon">✅</span>
         <div><strong>Rental tip:</strong> Most operators (OX Expeditions, Wicho &amp; Charlie's) rent sleeping bags, poles, and gaiters. Ask when booking — saves serious pack weight.</div>
       </div>
     </div>
   </section>
 
-  <!-- FOOD -->
-  <section id="food" class="section section-dark section-border">
+  <!-- PLACES -->
+  <section id="places" class="section section-dark section-border">
     <div class="container">
       <div class="section-header">
-        <p class="section-label"><span>04</span> Eat + Drink</p>
-        <h2 class="section-title">Food in Antigua</h2>
-        <p class="section-sub">Antigua punches way above its size for food.</p>
+        <p class="section-label"><span>03</span> Explore</p>
+        <h2 class="section-title">Places</h2>
+        <p class="section-sub">The crew's shared Google Docs. Add your picks, vote on spots, finalize the plan.</p>
       </div>
-      <div class="food-grid">
-        <div class="food-card">
-          <div class="food-tag">Breakfast</div>
-          <h3>Fernando's Kaffee</h3>
-          <p>The move for breakfast. Fresh fruit, amazing coffee, huevos rancheros. Go before 8 AM or wait in line.</p>
-        </div>
-        <div class="food-card">
-          <div class="food-tag">Coffee + Late Night</div>
-          <h3>Café No Sé</h3>
-          <p>Antigua institution — mezcal bar, coffee spot, live music. Known for their "illegal" mezcal selection.</p>
-        </div>
-        <div class="food-card">
-          <div class="food-tag">Local Food</div>
-          <h3>Hector's Bistro</h3>
-          <p>Best authentic Guatemalan food. Pepián stew and fresh tortillas. Extremely affordable.</p>
-        </div>
-        <div class="food-card">
-          <div class="food-tag">Group Dinner</div>
-          <h3>Restaurante Welten</h3>
-          <p>European/Guatemalan fusion in a colonial courtyard. Perfect for the Day 1 crew dinner.</p>
-        </div>
-        <div class="food-card">
-          <div class="food-tag">Rooftop</div>
-          <h3>Sky Cafe</h3>
-          <p>Rooftop bar with volcano views. Ideal for celebratory drinks after summit day. Order the mojitos.</p>
-        </div>
-        <div class="food-card">
-          <div class="food-tag">Street</div>
-          <h3>Parque Central Stalls</h3>
-          <p>Elotes, tostadas, and tamales from market stalls. Q5–15 each. Absolutely non-negotiable.</p>
-        </div>
-      </div>
-      <div class="alert">
-        <span class="alert-icon">☕</span>
-        <div><strong>Guatemala coffee is world-class.</strong> Antigua's volcanic soil grows some of the best beans on the planet. Pick up a bag to bring home — La Hermosa and Filicafé are great local roasters.</div>
-      </div>
+
+      <div class="places-grid" id="placesGrid"></div>
+
+      <p class="places-hint">Paste your Google Doc links above. Only you need to do it once — saved to this browser.</p>
     </div>
   </section>
 
@@ -642,7 +545,7 @@
   <section id="tips" class="section section-border">
     <div class="container">
       <div class="section-header">
-        <p class="section-label"><span>05</span> Know Before You Go</p>
+        <p class="section-label"><span>04</span> Know Before You Go</p>
         <h2 class="section-title">Pro Tips</h2>
       </div>
       <div class="tips-grid">
@@ -651,8 +554,8 @@
         <div class="tip"><div class="tip-num">03</div><h3>Layers, Layers, Layers</h3><p>28°C at the trailhead. -2°C at camp. You'll strip down going up and pile everything on at sunset.</p></div>
         <div class="tip"><div class="tip-num">04</div><h3>Hike Your Own Pace</h3><p>Slowest person sets the pace, no ego. No glory in burning out and getting altitude sickness 4 hours from camp.</p></div>
         <div class="tip"><div class="tip-num">05</div><h3>Cash Is King</h3><p>Many places in Antigua and all trailhead services are cash-only. Withdraw Q1,000–1,500 before leaving Antigua.</p></div>
-        <div class="tip"><div class="tip-num">06</div><h3>Offline Maps Essential</h3><p>Zero signal on the mountain. Download Google Maps or Maps.me offline before you leave Wi-Fi. No exceptions.</p></div>
-        <div class="tip"><div class="tip-num">07</div><h3>Fuego at Night = Insane</h3><p>Erupts every 15–30 min all night. Set your phone on something stable and do long exposures. Bring a mini tripod.</p></div>
+        <div class="tip"><div class="tip-num">06</div><h3>Offline Maps Essential</h3><p>Zero signal on the mountain. Download Google Maps or Maps.me offline before you leave Wi-Fi.</p></div>
+        <div class="tip"><div class="tip-num">07</div><h3>Fuego at Night</h3><p>Erupts every 15–30 min all night. Set your phone on something stable and do long exposures. Bring a mini tripod.</p></div>
         <div class="tip"><div class="tip-num">08</div><h3>Hydrate Early</h3><p>Carry 3L and start drinking water well before you feel thirsty. Altitude + exertion dehydrates you fast.</p></div>
       </div>
     </div>
@@ -662,7 +565,7 @@
   <footer class="footer">
     <div class="footer-inner">
       <div>
-        <p class="footer-title">Guatemala '26</p>
+        <p class="footer-title">guate<span class="logo-bracket">[bueno]</span> 2026</p>
         <p class="footer-sub">May 22–25 · Antigua · Acatenango</p>
       </div>
       <div class="footer-links">
@@ -674,47 +577,47 @@
   </footer>
 
   <script>
-    /* ---- Custom Cursor ---- */
+    /* ---- Cursor ---- */
     const dot  = document.getElementById('cursorDot');
     const ring = document.getElementById('cursorRing');
     document.addEventListener('mousemove', e => {
-      dot.style.left  = e.clientX + 'px';
-      dot.style.top   = e.clientY + 'px';
-      ring.style.left = e.clientX + 'px';
-      ring.style.top  = e.clientY + 'px';
+      dot.style.left  = e.clientX + 'px'; dot.style.top  = e.clientY + 'px';
+      ring.style.left = e.clientX + 'px'; ring.style.top = e.clientY + 'px';
     });
-    document.querySelectorAll('a,button,.crew-card,.day-header').forEach(el => {
-      el.addEventListener('mouseenter', () => document.body.classList.add('cursor-hover'));
-      el.addEventListener('mouseleave', () => document.body.classList.remove('cursor-hover'));
-    });
+    function addCursorHover(els) {
+      els.forEach(el => {
+        el.addEventListener('mouseenter', () => document.body.classList.add('cursor-hover'));
+        el.addEventListener('mouseleave', () => document.body.classList.remove('cursor-hover'));
+      });
+    }
+    addCursorHover(document.querySelectorAll('a,button,.day-header'));
 
     /* ---- Scroll Reveal ---- */
     const observer = new IntersectionObserver(entries => {
-      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); } });
-    }, { threshold: 0.08 });
-    document.querySelectorAll('.day-block,.pack-card,.food-card,.tip,.logistics-card').forEach(el => {
-      el.classList.add('reveal');
-      observer.observe(el);
+      entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+    }, { threshold: 0.06 });
+    document.querySelectorAll('.day-block,.pack-card,.tip,.places-card').forEach(el => {
+      el.classList.add('reveal'); observer.observe(el);
     });
 
-    /* ---- Collapse/Expand Days ---- */
+    /* ---- Collapse Days ---- */
     function toggleDay(id) {
       document.getElementById(id).classList.toggle('collapsed');
     }
 
     /* ---- Itinerary Edit Mode ---- */
-    const STORAGE_KEY  = 'guat2026_itinerary';
-    const LINKS_KEY    = 'guat2026_links';
+    const STORAGE_KEY = 'guat2026_itinerary';
+    const LINKS_KEY   = 'guat2026_links';
     let editMode = false;
 
     window.addEventListener('DOMContentLoaded', () => {
       const saved = JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}');
       document.querySelectorAll('.editable[data-key]').forEach(el => {
-        if (saved[el.getAttribute('data-key')] !== undefined) {
+        if (saved[el.getAttribute('data-key')] !== undefined)
           el.innerHTML = saved[el.getAttribute('data-key')];
-        }
       });
       renderAllLinks();
+      renderPlaces();
     });
 
     function saveEdits() {
@@ -728,16 +631,15 @@
     function toggleEditMode() {
       editMode = !editMode;
       const btn = document.getElementById('editToggle');
-      const timeline = document.getElementById('itineraryTimeline');
       document.querySelectorAll('.editable').forEach(el => {
         el.contentEditable = editMode ? 'true' : 'false';
         if (editMode) el.addEventListener('input', saveEdits);
         else el.removeEventListener('input', saveEdits);
       });
       if (!editMode) saveEdits();
-      btn.textContent = editMode ? '💾 Save & Exit' : '✏️ Edit Mode';
+      btn.textContent = editMode ? 'Save & Exit' : 'Edit Mode';
       btn.classList.toggle('active', editMode);
-      timeline.classList.toggle('edit-active', editMode);
+      document.getElementById('itineraryTimeline').classList.toggle('edit-active', editMode);
     }
 
     /* ---- Itinerary Links ---- */
@@ -750,27 +652,22 @@
         const key = item.getAttribute('data-item-key');
         const container = document.getElementById('il-' + key);
         if (!container) return;
-        const links = all[key] || [];
-        container.innerHTML = links.map((l, i) => `
+        container.innerHTML = (all[key] || []).map((l, i) => `
           <a class="link-pill" href="${l.url}" target="_blank" rel="noopener">
-            📍 ${l.label}
-            <span class="pill-del" onclick="deleteLink('${key}',${i},event)">×</span>
-          </a>
-        `).join('');
+            ${l.label}
+            <span class="pill-del" onclick="deleteLink('${key}',${i},event)">x</span>
+          </a>`).join('');
       });
     }
 
-    function openLinkForm(key, btn) {
-      const form = document.getElementById('lf-' + key);
-      form.classList.toggle('open');
-      if (form.classList.contains('open')) {
+    function openLinkForm(key) {
+      document.getElementById('lf-' + key).classList.toggle('open');
+      if (document.getElementById('lf-' + key).classList.contains('open'))
         document.getElementById('ll-' + key).focus();
-      }
     }
 
     function closeLinkForm(key) {
-      const form = document.getElementById('lf-' + key);
-      form.classList.remove('open');
+      document.getElementById('lf-' + key).classList.remove('open');
       document.getElementById('ll-' + key).value = '';
       document.getElementById('lu-' + key).value = '';
     }
@@ -788,11 +685,80 @@
     }
 
     function deleteLink(key, index, e) {
-      e.preventDefault();
-      e.stopPropagation();
+      e.preventDefault(); e.stopPropagation();
       const all = getLinks();
       if (all[key]) { all[key].splice(index, 1); setLinks(all); }
       renderAllLinks();
+    }
+
+    /* ---- Places / Google Docs ---- */
+    const PLACES_KEY = 'guat2026_places';
+
+    const defaultPlaces = [
+      { id: 'eat',   title: 'Where to Eat',    desc: 'Restaurants, cafes, and street food in Antigua the crew wants to try.',   url: '' },
+      { id: 'do',    title: 'Things to Do',    desc: 'Sights, activities, and day-trip options around Antigua.',                url: '' },
+      { id: 'stay',  title: 'Where to Stay',   desc: 'Hotel and hostel options — budget, mid-range, and splurge picks.',        url: '' },
+    ];
+
+    function getPlaces() {
+      const s = localStorage.getItem(PLACES_KEY);
+      return s ? JSON.parse(s) : defaultPlaces;
+    }
+    function setPlaces(p) { localStorage.setItem(PLACES_KEY, JSON.stringify(p)); }
+
+    function renderPlaces() {
+      const places = getPlaces();
+      document.getElementById('placesGrid').innerHTML = places.map((p, i) => `
+        <div class="places-card">
+          <div class="places-card-num">${String(i + 1).padStart(2, '0')}</div>
+          <div class="places-card-body">
+            <h3>${p.title}</h3>
+            <p>${p.desc}</p>
+          </div>
+          <div class="places-card-action">
+            ${p.url
+              ? `<a class="places-open-btn" href="${p.url}" target="_blank" rel="noopener">Open Doc →</a>`
+              : `<span class="places-no-link">No link yet</span>`
+            }
+            <button class="places-set-btn" onclick="editPlaceLink(${i})">Set link</button>
+          </div>
+        </div>`).join('');
+      addCursorHover(document.querySelectorAll('.places-card,.places-open-btn,.places-set-btn'));
+    }
+
+    function editPlaceLink(index) {
+      const existing = document.getElementById('placeModal');
+      if (existing) existing.remove();
+      const places = getPlaces();
+      const p = places[index];
+      const modal = document.createElement('div');
+      modal.id = 'placeModal';
+      modal.className = 'modal-overlay';
+      modal.innerHTML = `
+        <div class="modal">
+          <h3>${p.title}</h3>
+          <div class="modal-form">
+            <label>Google Doc / Sheets / Maps URL</label>
+            <input type="url" id="pm-url" value="${p.url}" placeholder="https://docs.google.com/..." />
+            <label>Description (optional)</label>
+            <input type="text" id="pm-desc" value="${p.desc}" />
+          </div>
+          <div class="modal-actions">
+            <button class="btn-primary" onclick="savePlaceLink(${index})">Save</button>
+            <button class="btn-ghost"   onclick="document.getElementById('placeModal').remove()">Cancel</button>
+          </div>
+        </div>`;
+      document.body.appendChild(modal);
+      modal.addEventListener('click', e => { if (e.target === modal) modal.remove(); });
+    }
+
+    function savePlaceLink(index) {
+      const places = getPlaces();
+      places[index].url  = document.getElementById('pm-url').value.trim();
+      places[index].desc = document.getElementById('pm-desc').value.trim() || places[index].desc;
+      setPlaces(places);
+      document.getElementById('placeModal').remove();
+      renderPlaces();
     }
   </script>
 

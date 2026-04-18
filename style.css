@@ -10,11 +10,11 @@
   --bg:           #07070b;
   --surface:      #0f0f15;
   --surface-2:    #161620;
-  --border:       #1e1e2c;
-  --border-hover: #34344a;
-  --text:         #e6e6de;
-  --text-muted:   #5a5a6e;
-  --text-dim:     #3a3a4e;
+  --border:       #282836;
+  --border-hover: #3e3e54;
+  --text:         #f0f0e8;
+  --text-muted:   #9090a8;
+  --text-dim:     #606078;
   --accent:       #ff4d1a;
   --accent-dim:   rgba(255,77,26,0.10);
   --green:        #4fd896;
@@ -282,7 +282,7 @@ body::before {
   font-weight: 600;
   letter-spacing: 0.10em;
   text-transform: uppercase;
-  color: var(--text-muted);
+  color: var(--text);
   white-space: nowrap;
   transition: color 0.2s;
   position: relative;
@@ -389,7 +389,7 @@ body::before {
   font-size: 0.68rem;
   letter-spacing: 0.22em;
   text-transform: uppercase;
-  color: var(--text-dim);
+  color: var(--text-muted);
   display: flex;
   align-items: center;
   gap: 0.75rem;
@@ -465,19 +465,19 @@ body::before {
   gap: 0.5rem;
   padding: 0.65rem 1.4rem;
   background: transparent;
-  color: var(--text-muted);
+  color: var(--text);
   font-size: 0.76rem;
   font-weight: 600;
   letter-spacing: 0.10em;
   text-transform: uppercase;
   border-radius: 50px;
-  border: 1px solid var(--border);
+  border: 1px solid var(--border-hover);
   cursor: none;
   transition: all 0.2s;
   white-space: nowrap;
   flex-shrink: 0;
 }
-.btn-ghost:hover { border-color: var(--text-muted); color: var(--white); opacity: 1; }
+.btn-ghost:hover { border-color: var(--white); color: var(--white); opacity: 1; }
 .btn-ghost.active { border-color: var(--accent); color: var(--accent); background: var(--accent-dim); }
 
 /* ============ ALERTS ============ */
@@ -1349,6 +1349,119 @@ body::before {
 .color-sel { border-color: var(--white); transform: scale(1.2); }
 
 .modal-actions { display: flex; gap: 0.75rem; justify-content: flex-end; }
+
+/* ============ LOGO BRACKET ============ */
+.logo-bracket {
+  color: var(--accent);
+  font-weight: 400;
+}
+
+/* ============ PLACES SECTION ============ */
+.places-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  background: var(--border);
+  margin-top: 2.5rem;
+}
+
+.places-card {
+  display: grid;
+  grid-template-columns: 60px 1fr auto;
+  gap: 1.5rem;
+  align-items: center;
+  background: var(--surface);
+  padding: 2rem 1.75rem;
+  transition: background 0.25s;
+}
+.places-card:hover { background: var(--surface-2); }
+
+.places-card-num {
+  font-family: var(--mono);
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--text-dim);
+  letter-spacing: -0.02em;
+  line-height: 1;
+}
+
+.places-card-body h3 {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--white);
+  margin-bottom: 0.3rem;
+  letter-spacing: -0.01em;
+}
+
+.places-card-body p {
+  font-size: 0.86rem;
+  color: var(--text-muted);
+  line-height: 1.55;
+}
+
+.places-card-action {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.5rem;
+  flex-shrink: 0;
+}
+
+.places-open-btn {
+  display: inline-block;
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  color: var(--accent);
+  border: 1px solid var(--accent);
+  padding: 0.5rem 1.1rem;
+  border-radius: 50px;
+  white-space: nowrap;
+  transition: background 0.2s, color 0.2s;
+}
+.places-open-btn:hover { background: var(--accent); color: var(--white); opacity: 1; }
+
+.places-no-link {
+  font-family: var(--mono);
+  font-size: 0.65rem;
+  letter-spacing: 0.10em;
+  text-transform: uppercase;
+  color: var(--text-dim);
+}
+
+.places-set-btn {
+  font-family: var(--mono);
+  font-size: 0.62rem;
+  letter-spacing: 0.10em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  background: none;
+  border: 1px solid var(--border-hover);
+  padding: 0.28rem 0.75rem;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: all 0.2s;
+  white-space: nowrap;
+}
+.places-set-btn:hover { border-color: var(--text); color: var(--white); }
+
+.places-hint {
+  font-family: var(--mono);
+  font-size: 0.65rem;
+  letter-spacing: 0.10em;
+  text-transform: uppercase;
+  color: var(--text-dim);
+  text-align: center;
+  margin-top: 1.25rem;
+}
+
+@media (max-width: 640px) {
+  .places-card { grid-template-columns: 40px 1fr; gap: 1rem; }
+  .places-card-action { grid-column: 1 / -1; flex-direction: row; align-items: center; }
+}
 
 /* ============ FOOTER ============ */
 .footer {
