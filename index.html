@@ -62,6 +62,14 @@
 
       <!-- TAB BAR -->
       <div class="day-tabs" id="dayTabs">
+        <button class="day-tab" data-target="panel-day-0a" onclick="switchTab(this)">
+          <span class="tab-date">May 20</span>
+          <span class="tab-label">K &amp; L Fly In</span>
+        </button>
+        <button class="day-tab" data-target="panel-day-0b" onclick="switchTab(this)">
+          <span class="tab-date">May 21</span>
+          <span class="tab-label">Pre-Trip</span>
+        </button>
         <button class="day-tab active" data-target="panel-day-1" onclick="switchTab(this)">
           <span class="tab-num">01</span>
           <span class="tab-date">May 22</span>
@@ -85,6 +93,176 @@
       </div>
 
       <div class="day-panels" id="itineraryTimeline">
+
+        <!-- PRE-TRIP: MAY 20 — Krish & Lillian fly in -->
+        <div class="day-panel" id="panel-day-0a">
+          <div class="day-body">
+            <ul class="schedule">
+              <li class="schedule-item" data-item-key="d0a-i1">
+                <span class="time editable" data-key="d0a-t1">6:02 AM</span>
+                <div class="item-right">
+                  <span class="desc editable" data-key="d0a-d1">Krish &amp; Lillian depart LGA → Houston IAH. United UA 1090 · Boeing 737-800 · 4h 5m. Terminal 4 at JFK.</span>
+                  <div class="item-links" id="il-d0a-i1"></div>
+                  <button class="add-link-btn" onclick="openLinkForm('d0a-i1', this)">+ link</button>
+                  <div class="link-form" id="lf-d0a-i1">
+                    <input type="text" placeholder="Label" id="ll-d0a-i1" />
+                    <input type="url"  placeholder="URL" id="lu-d0a-i1" />
+                    <div class="link-form-actions">
+                      <button class="btn-primary" onclick="saveLink('d0a-i1')">Add</button>
+                      <button class="btn-ghost" onclick="closeLinkForm('d0a-i1')">Cancel</button>
+                    </div>
+                  </div>
+                </div>
+              </li>
+              <li class="schedule-item" data-item-key="d0a-i2">
+                <span class="time editable" data-key="d0a-t2">9:09 AM</span>
+                <div class="item-right">
+                  <span class="desc editable" data-key="d0a-d2">Arrive Houston IAH. 2h 21m layover before the Guatemala connection.</span>
+                  <div class="item-links" id="il-d0a-i2"></div>
+                  <button class="add-link-btn" onclick="openLinkForm('d0a-i2', this)">+ link</button>
+                  <div class="link-form" id="lf-d0a-i2">
+                    <input type="text" placeholder="Label" id="ll-d0a-i2" />
+                    <input type="url"  placeholder="URL" id="lu-d0a-i2" />
+                    <div class="link-form-actions">
+                      <button class="btn-primary" onclick="saveLink('d0a-i2')">Add</button>
+                      <button class="btn-ghost" onclick="closeLinkForm('d0a-i2')">Cancel</button>
+                    </div>
+                  </div>
+                </div>
+              </li>
+              <li class="schedule-item" data-item-key="d0a-i3">
+                <span class="time editable" data-key="d0a-t3">2:42 PM</span>
+                <div class="item-right">
+                  <span class="desc editable" data-key="d0a-d3">IAH → Guatemala City (GUA). United UA 1032 · Boeing 737 MAX 8 · 2h 59m.</span>
+                  <div class="item-links" id="il-d0a-i3"></div>
+                  <button class="add-link-btn" onclick="openLinkForm('d0a-i3', this)">+ link</button>
+                  <div class="link-form" id="lf-d0a-i3">
+                    <input type="text" placeholder="Label" id="ll-d0a-i3" />
+                    <input type="url"  placeholder="URL" id="lu-d0a-i3" />
+                    <div class="link-form-actions">
+                      <button class="btn-primary" onclick="saveLink('d0a-i3')">Add</button>
+                      <button class="btn-ghost" onclick="closeLinkForm('d0a-i3')">Cancel</button>
+                    </div>
+                  </div>
+                </div>
+              </li>
+              <li class="schedule-item" data-item-key="d0a-i4">
+                <span class="time editable" data-key="d0a-t4">4:37 PM</span>
+                <div class="item-right">
+                  <span class="desc editable" data-key="d0a-d4">Krish &amp; Lillian arrive GUA (La Aurora International). Grab a shared shuttle to Antigua — ~45 min, Q80–100 (~$10–12). Check into Hotel Nolasco.</span>
+                  <div class="item-links" id="il-d0a-i4"></div>
+                  <button class="add-link-btn" onclick="openLinkForm('d0a-i4', this)">+ link</button>
+                  <div class="link-form" id="lf-d0a-i4">
+                    <input type="text" placeholder="Label" id="ll-d0a-i4" />
+                    <input type="url"  placeholder="URL" id="lu-d0a-i4" />
+                    <div class="link-form-actions">
+                      <button class="btn-primary" onclick="saveLink('d0a-i4')">Add</button>
+                      <button class="btn-ghost" onclick="closeLinkForm('d0a-i4')">Cancel</button>
+                    </div>
+                  </div>
+                </div>
+              </li>
+              <li class="schedule-item" data-item-key="d0a-i5">
+                <span class="time editable" data-key="d0a-t5">Evening</span>
+                <div class="item-right">
+                  <span class="desc editable" data-key="d0a-d5">Explore Antigua. Parque Central comes alive at night — great food, street vendors, chill vibes. Early bed, big day tomorrow.</span>
+                  <div class="item-links" id="il-d0a-i5"></div>
+                  <button class="add-link-btn" onclick="openLinkForm('d0a-i5', this)">+ link</button>
+                  <div class="link-form" id="lf-d0a-i5">
+                    <input type="text" placeholder="Label" id="ll-d0a-i5" />
+                    <input type="url"  placeholder="URL" id="lu-d0a-i5" />
+                    <div class="link-form-actions">
+                      <button class="btn-primary" onclick="saveLink('d0a-i5')">Add</button>
+                      <button class="btn-ghost" onclick="closeLinkForm('d0a-i5')">Cancel</button>
+                    </div>
+                  </div>
+                </div>
+              </li>
+            </ul>
+            <div class="day-tip editable" data-key="d0a-tip"><strong>Just Krish &amp; Lillian today.</strong> The rest of the crew arrives May 22 at 11:08 PM. Two full days to explore Antigua before the hike.</div>
+            <div class="extra-items" id="extra-day-0a"></div>
+            <div class="add-entry-zone">
+              <button class="add-entry-trigger" onclick="toggleAddEntry('day-0a', this)">+ Add time</button>
+              <div class="add-entry-form" id="add-form-day-0a">
+                <input type="text" id="add-time-day-0a" placeholder="Time (e.g. 2:00 PM)" />
+                <input type="text" id="add-desc-day-0a" placeholder="What's happening?" />
+                <div class="link-form-actions">
+                  <button class="btn-primary" onclick="addEntry('day-0a')">Add</button>
+                  <button class="btn-ghost" onclick="toggleAddEntry('day-0a')">Cancel</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- PRE-TRIP: MAY 21 — Full day in Antigua -->
+        <div class="day-panel" id="panel-day-0b">
+          <div class="day-body">
+            <ul class="schedule">
+              <li class="schedule-item" data-item-key="d0b-i1">
+                <span class="time editable" data-key="d0b-t1">Morning</span>
+                <div class="item-right">
+                  <span class="desc editable" data-key="d0b-d1">Slow start. Big breakfast near Parque Central. Walk the Arco de Santa Catalina and Cathedral ruins — the city's most iconic spots.</span>
+                  <div class="item-links" id="il-d0b-i1"></div>
+                  <button class="add-link-btn" onclick="openLinkForm('d0b-i1', this)">+ link</button>
+                  <div class="link-form" id="lf-d0b-i1">
+                    <input type="text" placeholder="Label" id="ll-d0b-i1" />
+                    <input type="url"  placeholder="URL" id="lu-d0b-i1" />
+                    <div class="link-form-actions">
+                      <button class="btn-primary" onclick="saveLink('d0b-i1')">Add</button>
+                      <button class="btn-ghost" onclick="closeLinkForm('d0b-i1')">Cancel</button>
+                    </div>
+                  </div>
+                </div>
+              </li>
+              <li class="schedule-item" data-item-key="d0b-i2">
+                <span class="time editable" data-key="d0b-t2">Afternoon</span>
+                <div class="item-right">
+                  <span class="desc editable" data-key="d0b-d2">Optional: coffee farm tour (~$20), Jade Museum, or just wander the cobblestones and pick up last-minute gear. Check the Places doc for spots.</span>
+                  <div class="item-links" id="il-d0b-i2"></div>
+                  <button class="add-link-btn" onclick="openLinkForm('d0b-i2', this)">+ link</button>
+                  <div class="link-form" id="lf-d0b-i2">
+                    <input type="text" placeholder="Label" id="ll-d0b-i2" />
+                    <input type="url"  placeholder="URL" id="lu-d0b-i2" />
+                    <div class="link-form-actions">
+                      <button class="btn-primary" onclick="saveLink('d0b-i2')">Add</button>
+                      <button class="btn-ghost" onclick="closeLinkForm('d0b-i2')">Cancel</button>
+                    </div>
+                  </div>
+                </div>
+              </li>
+              <li class="schedule-item" data-item-key="d0b-i3">
+                <span class="time editable" data-key="d0b-t3">11:08 PM</span>
+                <div class="item-right">
+                  <span class="desc editable" data-key="d0b-d3">Pennie, Vivian, Shannon &amp; Finn land at GUA. They're on the late Copa flight and will shuttle to Hotel Nolasco overnight — meet the full crew in the morning.</span>
+                  <div class="item-links" id="il-d0b-i3"></div>
+                  <button class="add-link-btn" onclick="openLinkForm('d0b-i3', this)">+ link</button>
+                  <div class="link-form" id="lf-d0b-i3">
+                    <input type="text" placeholder="Label" id="ll-d0b-i3" />
+                    <input type="url"  placeholder="URL" id="lu-d0b-i3" />
+                    <div class="link-form-actions">
+                      <button class="btn-primary" onclick="saveLink('d0b-i3')">Add</button>
+                      <button class="btn-ghost" onclick="closeLinkForm('d0b-i3')">Cancel</button>
+                    </div>
+                  </div>
+                </div>
+              </li>
+            </ul>
+            <div class="day-tip editable" data-key="d0b-tip"><strong>Altitude tip:</strong> Antigua sits at 1,530 m. Two days here before the hike is ideal acclimatization. Drink water, take it easy.</div>
+            <div class="extra-items" id="extra-day-0b"></div>
+            <div class="add-entry-zone">
+              <button class="add-entry-trigger" onclick="toggleAddEntry('day-0b', this)">+ Add time</button>
+              <div class="add-entry-form" id="add-form-day-0b">
+                <input type="text" id="add-time-day-0b" placeholder="Time (e.g. 2:00 PM)" />
+                <input type="text" id="add-desc-day-0b" placeholder="What's happening?" />
+                <div class="link-form-actions">
+                  <button class="btn-primary" onclick="addEntry('day-0b')">Add</button>
+                  <button class="btn-ghost" onclick="toggleAddEntry('day-0b')">Cancel</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
 
         <!-- DAY 1 -->
         <div class="day-panel active" id="panel-day-1">
@@ -712,15 +890,22 @@
     }
 
     function renderAllExtra() {
-      ['day-1','day-2','day-3','day-4'].forEach(renderExtraItems);
+      ['day-0a','day-0b','day-1','day-2','day-3','day-4'].forEach(renderExtraItems);
     }
 
     /* ---- Itinerary Edit Mode ---- */
-    const STORAGE_KEY = 'guat2026_itinerary';
-    const LINKS_KEY   = 'guat2026_links';
+    const STORAGE_KEY    = 'guat2026_itinerary';
+    const LINKS_KEY      = 'guat2026_links';
+    const ITIN_VERSION   = '3'; // bump this whenever HTML itinerary content changes
     let editMode = false;
 
     window.addEventListener('DOMContentLoaded', () => {
+      // Version check — clears stale edits when the source HTML updates
+      if (localStorage.getItem(STORAGE_KEY + '_v') !== ITIN_VERSION) {
+        localStorage.removeItem(STORAGE_KEY);
+        localStorage.removeItem(LINKS_KEY);
+        localStorage.setItem(STORAGE_KEY + '_v', ITIN_VERSION);
+      }
       const saved = JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}');
       document.querySelectorAll('.editable[data-key]').forEach(el => {
         if (saved[el.getAttribute('data-key')] !== undefined)

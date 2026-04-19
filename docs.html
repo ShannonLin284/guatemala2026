@@ -87,19 +87,32 @@
     });
 
     /* ---- Data ---- */
-    const DOCS_KEY = 'guat2026_docs';
+    const DOCS_KEY     = 'guat2026_docs';
+    const DOCS_VERSION = '2'; // bump this to reset everyone's vault to new defaults
 
     const defaultDocs = [
-      {
-        cat: 'tours',
-        title: 'Acatenango Overnight Hike',
-        who: 'Everyone',
-        confirmation: '',
-        date: '2026-05-23',
-        time: '06:00',
-        url: '',
-        notes: 'Book via OX Expeditions or Wicho & Charlie\'s — ~$65/person'
-      }
+      /* ── HOTEL ── */
+      { cat:'hotels', title:'Hotel Nolasco — Antigua', who:'Everyone', confirmation:'', date:'2026-05-20', time:'', url:'',
+        notes:'Krish & Lillian check in May 20. Full crew May 22. Mountain nights (May 23–24) at Acatenango base camp. Checkout May 25.' },
+      /* ── TOUR ── */
+      { cat:'tours', title:'Soy Tours — Acatenango Overnight Hike', who:'Everyone', confirmation:'', date:'2026-05-23', time:'07:30', url:'',
+        notes:'Q660/person, park entrance included. Optional Fuego hike +Q250. Pickup at Hotel Nolasco 7:30–8:00 AM. WhatsApp: +502 41 69 22 92 · @soytoursantigua' },
+      /* ── ARRIVAL FLIGHTS ── */
+      { cat:'flights', title:'Krish & Lillian — LGA → GUA (United via IAH)', who:'Krish, Lillian', confirmation:'', date:'2026-05-20', time:'6:02 AM', url:'',
+        notes:'UA 1090: LGA 6:02 AM → IAH 9:09 AM (4h 5m, 737-800) · 2h 21m layover · UA 1032: IAH 2:42 PM → GUA 4:37 PM (2h 59m, 737 MAX 8)' },
+      { cat:'flights', title:'Pennie, Vivian, Shannon & Finn — JFK → GUA (Copa via PTY)', who:'Pennie, Vivian, Shannon, Finn', confirmation:'', date:'2026-05-22', time:'3:32 PM', url:'',
+        notes:'Copa 812: JFK 3:32 PM → PTY 8:07 PM (5h 35m) · 1h 38m layover · Copa 182: PTY 9:45 PM → GUA 11:08 PM (2h 23m) · Total: 9h 36m' },
+      /* ── RETURN FLIGHTS ── */
+      { cat:'flights', title:'Krish — GUA → SFO (United via LAX)', who:'Krish', confirmation:'', date:'2026-05-25', time:'2:25 AM', url:'',
+        notes:'UA 1138: GUA 2:25 AM → LAX 8:30 AM (5h 14m, 737 MAX 8) · 2h 28m connection · UA 430: LAX 9:10 AM → SFO 10:48 AM (1h 33m, 737-800)' },
+      { cat:'flights', title:'Shannon — GUA → AUS (United via IAH)', who:'Shannon', confirmation:'', date:'2026-05-25', time:'3:45 PM', url:'',
+        notes:'UA 1911: GUA 3:45 PM → IAH 7:49 PM (3h 04m) · 1h 56m layover · UA 1519: IAH 9:45 PM → AUS 10:42 PM (57m)' },
+      { cat:'flights', title:'Pennie, Vivian & Finn — GUA → JFK (Copa via PTY)', who:'Pennie, Vivian, Finn', confirmation:'', date:'2026-05-25', time:'4:33 PM', url:'',
+        notes:'Copa 361: GUA 4:33 PM → PTY 7:55 PM (2h 22m) · ⚠️ 11h 40m layover — FIGURE OUT PTY PLAN · Copa 809: PTY 7:35 AM → JFK 1:50 PM May 26 (5h 15m) · Total: 19h 17m' },
+      { cat:'flights', title:'Lillian — GUA → Dallas', who:'Lillian', confirmation:'', date:'2026-05-25', time:'', url:'',
+        notes:'TBD — add flight details' },
+      { cat:'flights', title:'Juju — Arrival & Departure', who:'Juju', confirmation:'', date:'', time:'', url:'',
+        notes:'TBD — add flight details' }
     ];
 
     const catMeta = {
@@ -111,10 +124,15 @@
     };
 
     function getDocs() {
-      const saved = localStorage.getItem(DOCS_KEY);
-      return saved ? JSON.parse(saved) : defaultDocs;
+      const saved   = localStorage.getItem(DOCS_KEY);
+      const version = localStorage.getItem(DOCS_KEY + '_v');
+      if (!saved || version !== DOCS_VERSION) return defaultDocs;
+      return JSON.parse(saved);
     }
-    function saveDocs(docs) { localStorage.setItem(DOCS_KEY, JSON.stringify(docs)); }
+    function saveDocs(docs) {
+      localStorage.setItem(DOCS_KEY, JSON.stringify(docs));
+      localStorage.setItem(DOCS_KEY + '_v', DOCS_VERSION);
+    }
 
     let activeCat = 'all';
 
