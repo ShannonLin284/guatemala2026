@@ -55,21 +55,39 @@
         <div class="section-header">
           <p class="section-label"><span>01</span> Day by Day</p>
           <h2 class="section-title">Itinerary</h2>
-          <p class="section-sub">Click a day to expand. Hit Edit Mode to update any details — saves to your browser.</p>
+          <p class="section-sub">Switch days with the tabs. Add new times with the button at the bottom of each day.</p>
         </div>
         <button class="btn-ghost" id="editToggle" onclick="toggleEditMode()">Edit Mode</button>
       </div>
 
-      <div class="timeline" id="itineraryTimeline">
+      <!-- TAB BAR -->
+      <div class="day-tabs" id="dayTabs">
+        <button class="day-tab active" data-target="panel-day-1" onclick="switchTab(this)">
+          <span class="tab-num">01</span>
+          <span class="tab-date">May 22</span>
+          <span class="tab-label">Arrive</span>
+        </button>
+        <button class="day-tab" data-target="panel-day-2" onclick="switchTab(this)">
+          <span class="tab-num">02</span>
+          <span class="tab-date">May 23</span>
+          <span class="tab-label">Ascent</span>
+        </button>
+        <button class="day-tab" data-target="panel-day-3" onclick="switchTab(this)">
+          <span class="tab-num">03</span>
+          <span class="tab-date">May 24</span>
+          <span class="tab-label">Summit</span>
+        </button>
+        <button class="day-tab" data-target="panel-day-4" onclick="switchTab(this)">
+          <span class="tab-num">04</span>
+          <span class="tab-date">May 25</span>
+          <span class="tab-label">Depart</span>
+        </button>
+      </div>
+
+      <div class="day-panels" id="itineraryTimeline">
 
         <!-- DAY 1 -->
-        <div class="day-block" id="day-1">
-          <div class="day-header" onclick="toggleDay('day-1')">
-            <span class="day-num day-num-green">Day 01</span>
-            <span class="day-title editable" data-key="d1-title">Friday, May 22 — Arrive &amp; Antigua</span>
-            <span class="day-tag">Travel + Explore</span>
-            <span class="day-chevron">▾</span>
-          </div>
+        <div class="day-panel active" id="panel-day-1">
           <div class="day-body">
             <ul class="schedule">
               <li class="schedule-item" data-item-key="d1-i1">
@@ -154,17 +172,23 @@
               </li>
             </ul>
             <div class="day-tip editable" data-key="d1-tip"><strong>Altitude tip:</strong> Antigua sits at 1,530 m. You're already acclimatizing. Drink water, skip the alcohol tonight.</div>
+            <div class="extra-items" id="extra-day-1"></div>
+            <div class="add-entry-zone">
+              <button class="add-entry-trigger" onclick="toggleAddEntry('day-1', this)">+ Add time</button>
+              <div class="add-entry-form" id="add-form-day-1">
+                <input type="text" id="add-time-day-1" placeholder="Time (e.g. 2:00 PM)" />
+                <input type="text" id="add-desc-day-1" placeholder="What's happening?" />
+                <div class="link-form-actions">
+                  <button class="btn-primary" onclick="addEntry('day-1')">Add</button>
+                  <button class="btn-ghost" onclick="toggleAddEntry('day-1')">Cancel</button>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
 
         <!-- DAY 2 -->
-        <div class="day-block" id="day-2">
-          <div class="day-header" onclick="toggleDay('day-2')">
-            <span class="day-num day-num-orange">Day 02</span>
-            <span class="day-title editable" data-key="d2-title">Saturday, May 23 — Acatenango Ascent &amp; Camp</span>
-            <span class="day-tag">Main Event</span>
-            <span class="day-chevron">▾</span>
-          </div>
+        <div class="day-panel" id="panel-day-2">
           <div class="day-body">
             <ul class="schedule">
               <li class="schedule-item" data-item-key="d2-i1">
@@ -265,17 +289,23 @@
               </li>
             </ul>
             <div class="day-tip editable" data-key="d2-tip"><strong>Physically:</strong> Hardest day. Altitude + incline hits differently. Go slow, breathe deep, breaks every 10–15 min. No shame.</div>
+            <div class="extra-items" id="extra-day-2"></div>
+            <div class="add-entry-zone">
+              <button class="add-entry-trigger" onclick="toggleAddEntry('day-2', this)">+ Add time</button>
+              <div class="add-entry-form" id="add-form-day-2">
+                <input type="text" id="add-time-day-2" placeholder="Time (e.g. 2:00 PM)" />
+                <input type="text" id="add-desc-day-2" placeholder="What's happening?" />
+                <div class="link-form-actions">
+                  <button class="btn-primary" onclick="addEntry('day-2')">Add</button>
+                  <button class="btn-ghost" onclick="toggleAddEntry('day-2')">Cancel</button>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
 
         <!-- DAY 3 -->
-        <div class="day-block" id="day-3">
-          <div class="day-header" onclick="toggleDay('day-3')">
-            <span class="day-num day-num-gold">Day 03</span>
-            <span class="day-title editable" data-key="d3-title">Sunday, May 24 — Summit + Descent + Antigua</span>
-            <span class="day-tag">Summit Day</span>
-            <span class="day-chevron">▾</span>
-          </div>
+        <div class="day-panel" id="panel-day-3">
           <div class="day-body">
             <ul class="schedule">
               <li class="schedule-item" data-item-key="d3-i1">
@@ -376,17 +406,23 @@
               </li>
             </ul>
             <div class="day-tip editable" data-key="d3-tip"><strong>Weather:</strong> May mornings are almost always clear — summit views are best at dawn. Clouds roll in by 10–11 AM.</div>
+            <div class="extra-items" id="extra-day-3"></div>
+            <div class="add-entry-zone">
+              <button class="add-entry-trigger" onclick="toggleAddEntry('day-3', this)">+ Add time</button>
+              <div class="add-entry-form" id="add-form-day-3">
+                <input type="text" id="add-time-day-3" placeholder="Time (e.g. 2:00 PM)" />
+                <input type="text" id="add-desc-day-3" placeholder="What's happening?" />
+                <div class="link-form-actions">
+                  <button class="btn-primary" onclick="addEntry('day-3')">Add</button>
+                  <button class="btn-ghost" onclick="toggleAddEntry('day-3')">Cancel</button>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
 
         <!-- DAY 4 -->
-        <div class="day-block" id="day-4">
-          <div class="day-header" onclick="toggleDay('day-4')">
-            <span class="day-num day-num-default">Day 04</span>
-            <span class="day-title editable" data-key="d4-title">Monday, May 25 — Antigua + Fly Home</span>
-            <span class="day-tag">Depart</span>
-            <span class="day-chevron">▾</span>
-          </div>
+        <div class="day-panel" id="panel-day-4">
           <div class="day-body">
             <ul class="schedule">
               <li class="schedule-item" data-item-key="d4-i1">
@@ -439,6 +475,18 @@
               </li>
             </ul>
             <div class="day-tip editable" data-key="d4-tip"><strong>Flights:</strong> Afternoon/evening works best — full morning in Antigua. Most US connections route through Miami, Houston, or Atlanta.</div>
+            <div class="extra-items" id="extra-day-4"></div>
+            <div class="add-entry-zone">
+              <button class="add-entry-trigger" onclick="toggleAddEntry('day-4', this)">+ Add time</button>
+              <div class="add-entry-form" id="add-form-day-4">
+                <input type="text" id="add-time-day-4" placeholder="Time (e.g. 2:00 PM)" />
+                <input type="text" id="add-desc-day-4" placeholder="What's happening?" />
+                <div class="link-form-actions">
+                  <button class="btn-primary" onclick="addEntry('day-4')">Add</button>
+                  <button class="btn-ghost" onclick="toggleAddEntry('day-4')">Cancel</button>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
 
@@ -588,19 +636,67 @@
         el.addEventListener('mouseleave', () => document.body.classList.remove('cursor-hover'));
       });
     }
-    addCursorHover(document.querySelectorAll('a,button,.day-header'));
+    addCursorHover(document.querySelectorAll('a,button'));
 
     /* ---- Scroll Reveal ---- */
     const observer = new IntersectionObserver(entries => {
       entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
     }, { threshold: 0.06 });
-    document.querySelectorAll('.day-block,.pack-card,.tip,.places-card').forEach(el => {
+    document.querySelectorAll('.pack-card,.tip,.places-card').forEach(el => {
       el.classList.add('reveal'); observer.observe(el);
     });
 
-    /* ---- Collapse Days ---- */
-    function toggleDay(id) {
-      document.getElementById(id).classList.toggle('collapsed');
+    /* ---- Day Tabs ---- */
+    function switchTab(btn) {
+      document.querySelectorAll('.day-tab').forEach(t => t.classList.remove('active'));
+      document.querySelectorAll('.day-panel').forEach(p => p.classList.remove('active'));
+      btn.classList.add('active');
+      document.getElementById(btn.dataset.target).classList.add('active');
+    }
+
+    /* ---- Add Entry ---- */
+    const EXTRA_KEY = 'guat2026_extra';
+    function getExtra() { return JSON.parse(localStorage.getItem(EXTRA_KEY) || '{}'); }
+    function setExtra(d) { localStorage.setItem(EXTRA_KEY, JSON.stringify(d)); }
+
+    function toggleAddEntry(dayId) {
+      document.getElementById('add-form-' + dayId).classList.toggle('open');
+    }
+
+    function addEntry(dayId) {
+      const time = document.getElementById('add-time-' + dayId).value.trim();
+      const desc = document.getElementById('add-desc-' + dayId).value.trim();
+      if (!desc) { alert('Add a description.'); return; }
+      const all = getExtra();
+      if (!all[dayId]) all[dayId] = [];
+      all[dayId].push({ time: time || '—', desc });
+      setExtra(all);
+      document.getElementById('add-time-' + dayId).value = '';
+      document.getElementById('add-desc-' + dayId).value = '';
+      document.getElementById('add-form-' + dayId).classList.remove('open');
+      renderExtraItems(dayId);
+    }
+
+    function deleteEntry(dayId, index) {
+      const all = getExtra();
+      if (all[dayId]) { all[dayId].splice(index, 1); setExtra(all); }
+      renderExtraItems(dayId);
+    }
+
+    function renderExtraItems(dayId) {
+      const container = document.getElementById('extra-' + dayId);
+      if (!container) return;
+      const items = getExtra()[dayId] || [];
+      container.innerHTML = items.map((e, i) => `
+        <div class="extra-item">
+          <span class="extra-time">${e.time}</span>
+          <span class="extra-desc">${e.desc}</span>
+          <button class="extra-item-delete" onclick="deleteEntry('${dayId}', ${i})">✕</button>
+        </div>`).join('');
+    }
+
+    function renderAllExtra() {
+      ['day-1','day-2','day-3','day-4'].forEach(renderExtraItems);
     }
 
     /* ---- Itinerary Edit Mode ---- */
@@ -615,6 +711,7 @@
           el.innerHTML = saved[el.getAttribute('data-key')];
       });
       renderAllLinks();
+      renderAllExtra();
       renderPlaces();
     });
 

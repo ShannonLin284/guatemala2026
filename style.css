@@ -7,11 +7,11 @@
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
 :root {
-  --bg:           #07070b;
-  --surface:      #0f0f15;
-  --surface-2:    #161620;
-  --border:       #282836;
-  --border-hover: #3e3e54;
+  --bg:           #060606;
+  --surface:      #0f0f0f;
+  --surface-2:    #171717;
+  --border:       #272727;
+  --border-hover: #3a3a3a;
   --text:         #f0f0e8;
   --text-muted:   #9090a8;
   --text-dim:     #606078;
@@ -113,10 +113,9 @@ body::before {
   position: absolute;
   inset: 0;
   background:
-    url('https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1800&q=85')
-    center/cover no-repeat;
-  opacity: 0.22;
-  filter: saturate(0.6);
+    url('volcano.jpg')
+    center 40%/cover no-repeat;
+  opacity: 0.75;
 }
 
 .hero-gradient {
@@ -1349,6 +1348,196 @@ body::before {
 .color-sel { border-color: var(--white); transform: scale(1.2); }
 
 .modal-actions { display: flex; gap: 0.75rem; justify-content: flex-end; }
+
+/* ============ DAY TABS ============ */
+.day-tabs {
+  display: flex;
+  gap: 0;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  background: var(--border);
+  margin-bottom: 0;
+}
+
+.day-tab {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 1.1rem 0.75rem;
+  background: var(--surface);
+  border: none;
+  cursor: pointer;
+  transition: background 0.2s;
+  border-right: 1px solid var(--border);
+  min-width: 0;
+}
+.day-tab:last-child { border-right: none; }
+.day-tab:hover { background: var(--surface-2); }
+
+.day-tab.active {
+  background: var(--surface-2);
+  position: relative;
+}
+.day-tab.active::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 2px;
+  background: var(--accent);
+}
+
+.tab-num {
+  font-family: var(--mono);
+  font-size: 0.60rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  color: var(--text-muted);
+}
+.day-tab.active .tab-num { color: var(--accent); }
+
+.tab-date {
+  font-family: var(--mono);
+  font-size: 0.62rem;
+  letter-spacing: 0.06em;
+  color: var(--text-muted);
+  white-space: nowrap;
+}
+
+.tab-label {
+  font-size: 0.80rem;
+  font-weight: 700;
+  color: var(--text-muted);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 100%;
+  text-align: center;
+}
+.day-tab.active .tab-label { color: var(--white); }
+
+/* ---- Day Panels ---- */
+.day-panels { margin-top: 1px; }
+
+.day-panel {
+  display: none;
+  border: 1px solid var(--border);
+  border-radius: 0 0 var(--radius-lg) var(--radius-lg);
+  overflow: hidden;
+}
+.day-panel.active { display: block; }
+
+/* ---- Add Entry Zone ---- */
+.add-entry-zone {
+  padding: 1rem 1.75rem 1.25rem;
+  border-top: 1px solid var(--border);
+  background: var(--surface);
+}
+
+.add-entry-trigger {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-family: var(--mono);
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  background: none;
+  border: 1px dashed var(--border-hover);
+  padding: 0.45rem 1rem;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.add-entry-trigger:hover { border-color: var(--accent); color: var(--accent); }
+
+.add-entry-form {
+  display: none;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-top: 0.75rem;
+  padding: 1rem;
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+}
+.add-entry-form.open { display: flex; }
+
+.add-entry-form input {
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 0.55rem 0.85rem;
+  font-size: 0.88rem;
+  color: var(--text);
+  font-family: inherit;
+  outline: none;
+  transition: border-color 0.2s;
+}
+.add-entry-form input:focus { border-color: var(--accent); }
+.add-entry-form input::placeholder { color: var(--text-dim); }
+
+.add-entry-actions { display: flex; gap: 0.5rem; }
+
+/* ---- Extra items (user-added) ---- */
+.extra-item {
+  display: grid;
+  grid-template-columns: 150px 1fr auto;
+  gap: 1rem;
+  padding: 0.85rem 1.75rem;
+  border-bottom: 1px solid var(--border);
+  align-items: start;
+  background: var(--surface);
+}
+
+.extra-item input.extra-time,
+.extra-item input.extra-desc,
+.extra-item span.extra-time,
+.extra-item span.extra-desc {
+  background: transparent;
+  border: none;
+  outline: none;
+  font-family: inherit;
+  color: var(--text);
+  width: 100%;
+  padding: 0;
+}
+.extra-item input.extra-time,
+.extra-item span.extra-time {
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: var(--accent);
+  letter-spacing: 0.04em;
+}
+.extra-item input.extra-desc,
+.extra-item span.extra-desc { font-size: 0.90rem; line-height: 1.7; }
+.extra-item input:focus { box-shadow: 0 1px 0 var(--border-hover); }
+
+.extra-item-delete {
+  background: none;
+  border: 1px solid var(--border);
+  color: var(--text-dim);
+  border-radius: 50px;
+  padding: 0.2rem 0.55rem;
+  font-size: 0.70rem;
+  cursor: pointer;
+  transition: all 0.2s;
+  flex-shrink: 0;
+  margin-top: 0.1rem;
+}
+.extra-item-delete:hover { border-color: var(--accent); color: var(--accent); }
+
+@media (max-width: 640px) {
+  .day-tabs { border-radius: var(--radius); }
+  .tab-label { display: none; }
+  .day-tab { padding: 0.85rem 0.5rem; }
+  .extra-item { grid-template-columns: 100px 1fr auto; gap: 0.5rem; padding: 0.75rem 1rem; }
+}
 
 /* ============ LOGO BRACKET ============ */
 .logo-bracket {
