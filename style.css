@@ -112,10 +112,8 @@ body::before {
 .hero-bg {
   position: absolute;
   inset: 0;
-  background:
-    url('volcano.jpg')
-    center 40%/cover no-repeat;
-  opacity: 0.75;
+  background: radial-gradient(ellipse at 60% 40%, #1a0a00 0%, #060606 70%);
+  opacity: 1;
 }
 
 .hero-gradient {
