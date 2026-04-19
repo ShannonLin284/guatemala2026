@@ -818,13 +818,17 @@
       if (!container) return;
       const items = getExtra()[dayId] || [];
       if (!items.length) { container.innerHTML = ''; return; }
+      const ce = editMode ? 'true' : 'false';
+      const cls = editMode ? 'editable' : '';
       container.innerHTML = `<ul class="schedule">${items.map((e, i) => {
         const key = `${dayId}-x${i}`;
         return `
           <li class="schedule-item" data-item-key="${key}">
-            <span class="time">${e.time}</span>
+            <span class="time ${cls}" contenteditable="${ce}"
+              oninput="updateExtraItem('${dayId}',${i},'time',this.innerText)">${e.time}</span>
             <div class="item-right">
-              <span class="desc">${e.desc}</span>
+              <span class="desc ${cls}" contenteditable="${ce}"
+                oninput="updateExtraItem('${dayId}',${i},'desc',this.innerText)">${e.desc}</span>
               <div class="item-links" id="il-${key}"></div>
               <button class="add-link-btn" onclick="openLinkForm('${key}', this)">+ link</button>
               <div class="link-form" id="lf-${key}">
@@ -840,6 +844,14 @@
           </li>`;
       }).join('')}</ul>`;
       renderAllLinks();
+    }
+
+    function updateExtraItem(dayId, index, field, value) {
+      const all = getExtra();
+      if (all[dayId] && all[dayId][index]) {
+        all[dayId][index][field] = value;
+        setExtra(all);
+      }
     }
 
     function renderAllExtra() {
@@ -889,6 +901,7 @@
       btn.textContent = editMode ? 'Save & Exit' : 'Edit Mode';
       btn.classList.toggle('active', editMode);
       document.getElementById('itineraryTimeline').classList.toggle('edit-active', editMode);
+      renderAllExtra();
     }
 
     /* ---- Itinerary Links ---- */

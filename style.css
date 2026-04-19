@@ -589,6 +589,9 @@ body::before {
 
 .schedule-item:last-child { border-bottom: none; }
 
+/* Extra items connect seamlessly to the main schedule */
+.extra-items:not(:empty) { border-top: 1px solid var(--border); }
+
 .time {
   font-family: var(--mono);
   font-size: 0.72rem;
