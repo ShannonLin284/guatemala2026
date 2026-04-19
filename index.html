@@ -817,12 +817,29 @@
       const container = document.getElementById('extra-' + dayId);
       if (!container) return;
       const items = getExtra()[dayId] || [];
-      container.innerHTML = items.map((e, i) => `
-        <div class="extra-item">
-          <span class="extra-time">${e.time}</span>
-          <span class="extra-desc">${e.desc}</span>
-          <button class="extra-item-delete" onclick="deleteEntry('${dayId}', ${i})">✕</button>
-        </div>`).join('');
+      if (!items.length) { container.innerHTML = ''; return; }
+      container.innerHTML = `<ul class="schedule">${items.map((e, i) => {
+        const key = `${dayId}-x${i}`;
+        return `
+          <li class="schedule-item" data-item-key="${key}">
+            <span class="time">${e.time}</span>
+            <div class="item-right">
+              <span class="desc">${e.desc}</span>
+              <div class="item-links" id="il-${key}"></div>
+              <button class="add-link-btn" onclick="openLinkForm('${key}', this)">+ link</button>
+              <div class="link-form" id="lf-${key}">
+                <input type="text" placeholder="Label" id="ll-${key}" />
+                <input type="url"  placeholder="URL" id="lu-${key}" />
+                <div class="link-form-actions">
+                  <button class="btn-primary" onclick="saveLink('${key}')">Add</button>
+                  <button class="btn-ghost" onclick="closeLinkForm('${key}')">Cancel</button>
+                </div>
+              </div>
+              <button class="extra-item-delete" onclick="deleteEntry('${dayId}', ${i})">✕ Remove</button>
+            </div>
+          </li>`;
+      }).join('')}</ul>`;
+      renderAllLinks();
     }
 
     function renderAllExtra() {
