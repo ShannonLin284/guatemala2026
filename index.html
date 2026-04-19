@@ -627,20 +627,23 @@
   <!-- PACKING -->
   <section id="packing" class="section section-border">
     <div class="container">
-      <div class="section-header">
-        <p class="section-label"><span>02</span> Gear</p>
-        <h2 class="section-title">Packing List</h2>
-        <p class="section-sub">
-          <span class="badge-free">FREE · Soy Tours</span> = they provide it.
-          <span class="badge-rent">RENT · Soy Tours</span> = bring Q or ask when booking.
-          <span class="required">MUST</span> = you need to bring it.
-        </p>
+      <div class="section-header-row">
+        <div class="section-header">
+          <p class="section-label"><span>02</span> Gear</p>
+          <h2 class="section-title">Packing List</h2>
+          <p class="section-sub">
+            <span class="badge-free">FREE · Soy Tours</span> = they provide it.&nbsp;
+            <span class="badge-rent">RENT · Soy Tours</span> = ask when booking.&nbsp;
+            <span class="required">MUST</span> = bring it yourself.
+          </p>
+        </div>
+        <button class="btn-ghost" id="packEditToggle" onclick="togglePackEdit()">Edit List</button>
       </div>
-      <div class="pack-grid">
+      <div class="pack-grid" oninput="savePacking()">
 
         <div class="pack-card">
           <h3>Soy Tours Provides Free</h3>
-          <ul>
+          <ul id="pul-1">
             <li><span class="badge-free">FREE</span> Winter jacket</li>
             <li><span class="badge-free">FREE</span> Fleece pants</li>
             <li><span class="badge-free">FREE</span> Fleece hat</li>
@@ -654,7 +657,7 @@
 
         <div class="pack-card">
           <h3>Rent from Soy Tours</h3>
-          <ul>
+          <ul id="pul-2">
             <li><span class="badge-rent">Q100</span> Large hike backpack (45L+)</li>
             <li><span class="badge-rent">Q50</span> Headlamp</li>
             <li><span class="badge-rent">Q10</span> Trekking pole (per pole)</li>
@@ -663,7 +666,7 @@
 
         <div class="pack-card">
           <h3>Clothing — Bring Yourself</h3>
-          <ul>
+          <ul id="pul-3">
             <li><span class="required">MUST</span> Hiking boots, ankle support — broken in</li>
             <li><span class="required">MUST</span> Dry-fit hiking shirt (x2)</li>
             <li><span class="required">MUST</span> Rain gear — waterproof jacket + pants or poncho <em style="color:var(--gold);font-size:0.8em;">(critical May–Oct)</em></li>
@@ -675,7 +678,7 @@
 
         <div class="pack-card">
           <h3>Essentials — Bring Yourself</h3>
-          <ul>
+          <ul id="pul-4">
             <li><span class="required">MUST</span> 3–4 liters of water (altitude dehydrates fast)</li>
             <li><span class="required">MUST</span> Sunscreen SPF 50+, sun cap, sunglasses</li>
             <li><span class="required">MUST</span> Toilet paper / tissue</li>
@@ -689,7 +692,7 @@
 
         <div class="pack-card">
           <h3>Trail Snacks</h3>
-          <ul>
+          <ul id="pul-5">
             <li>Granola bars, chocolate, dried fruit, nuts</li>
             <li>Lunch for the trail (not provided)</li>
             <li>Extra snacks for the summit push</li>
@@ -699,7 +702,7 @@
 
         <div class="pack-card">
           <h3>Docs + Tech</h3>
-          <ul>
+          <ul id="pul-6">
             <li><span class="required">MUST</span> Passport (valid 6+ months)</li>
             <li><span class="required">MUST</span> Phone + offline maps downloaded</li>
             <li>Camera / GoPro + mini tripod for Fuego shots</li>
@@ -1034,6 +1037,41 @@
       document.getElementById('placeModal').remove();
       renderPlaces();
     }
+
+    /* ---- Packing List Edit ---- */
+    const PACK_KEY     = 'guat2026_packing';
+    const PACK_VERSION = '1';
+    let packEditMode   = false;
+
+    function loadPacking() {
+      if (localStorage.getItem(PACK_KEY + '_v') !== PACK_VERSION) return;
+      const data = JSON.parse(localStorage.getItem(PACK_KEY) || '{}');
+      document.querySelectorAll('.pack-card ul[id]').forEach(ul => {
+        if (data[ul.id]) ul.innerHTML = data[ul.id];
+      });
+    }
+
+    function savePacking() {
+      const data = {};
+      document.querySelectorAll('.pack-card ul[id]').forEach(ul => { data[ul.id] = ul.innerHTML; });
+      localStorage.setItem(PACK_KEY, JSON.stringify(data));
+      localStorage.setItem(PACK_KEY + '_v', PACK_VERSION);
+    }
+
+    function togglePackEdit() {
+      packEditMode = !packEditMode;
+      const btn = document.getElementById('packEditToggle');
+      document.querySelectorAll('.pack-card ul[id]').forEach(ul => {
+        ul.contentEditable = packEditMode ? 'true' : 'false';
+        ul.classList.toggle('pack-editing', packEditMode);
+      });
+      btn.textContent = packEditMode ? 'Save & Exit' : 'Edit List';
+      btn.classList.toggle('active', packEditMode);
+      if (!packEditMode) savePacking();
+    }
+
+    // loadPacking() is called from the main DOMContentLoaded block below via inline call
+    document.addEventListener('DOMContentLoaded', loadPacking);
   </script>
 
 </body>

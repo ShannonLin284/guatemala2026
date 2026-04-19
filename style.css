@@ -816,6 +816,15 @@ body::before {
 
 .pack-card li::before { content: '–'; color: var(--text-dim); flex-shrink: 0; }
 
+.pack-card ul.pack-editing {
+  outline: 1px dashed var(--border-hover);
+  border-radius: var(--radius-sm);
+  padding: 0.5rem;
+  min-height: 2rem;
+}
+.pack-card ul.pack-editing li { cursor: text; }
+.pack-card ul.pack-editing:focus { outline-color: var(--accent); }
+
 .required, .badge-free, .badge-rent {
   display: inline-block;
   font-size: 0.58rem;
