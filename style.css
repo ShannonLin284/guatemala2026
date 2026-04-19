@@ -816,19 +816,21 @@ body::before {
 
 .pack-card li::before { content: '–'; color: var(--text-dim); flex-shrink: 0; }
 
-.required {
+.required, .badge-free, .badge-rent {
   display: inline-block;
-  background: var(--accent);
-  color: var(--white);
   font-size: 0.58rem;
   font-weight: 800;
   letter-spacing: 0.10em;
   text-transform: uppercase;
-  padding: 0.08rem 0.4rem;
+  padding: 0.08rem 0.45rem;
   border-radius: 3px;
   flex-shrink: 0;
   margin-top: 0.2rem;
+  vertical-align: middle;
 }
+.required  { background: var(--accent); color: var(--white); }
+.badge-free { background: var(--green);  color: #0a1a0f; }
+.badge-rent { background: var(--gold);   color: #1a1200; }
 
 /* ============ FOOD ============ */
 .food-grid {
